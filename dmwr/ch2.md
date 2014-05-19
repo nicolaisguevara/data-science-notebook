@@ -198,12 +198,23 @@ The function `qq.plot()` ,in the `car` (Fox, 2009) package, obtains normal Q-Q p
 
 ```r
 library(car)
+```
+
+```
+## Error: there is no package called 'car'
+```
+
+```r
 par(mfrow = c(1, 2))
 hist(algae$mxPH, prob = T, xlab = "", main = "Histogram of maximum pH value", 
     ylim = 0:1)
 lines(density(algae$mxPH, na.rm = T))
 rug(jitter(algae$mxPH))
 qqPlot(algae$mxPH, main = "Normal QQ plot of maximum pH")
+```
+
+```
+## Error: Ã»ÓÐ"qqPlot"Õâ¸öº¯Êý
 ```
 
 ![plot of chunk ch2hist2](figure/ch2hist2.png) 
@@ -230,7 +241,7 @@ rug(jitter(algae$oPO4), side = 2)
 abline(h = mean(algae$oPO4, na.rm = T), lty = 2)
 ```
 
-![plot of chunk unnamed-chunk-3](figure/unnamed-chunk-3.png) 
+![plot of chunk ch2boxplot1](figure/ch2boxplot1.png) 
 
 
 - `boxplot`: draws a box plot
@@ -252,7 +263,7 @@ abline(h = median(algae$NH4, na.rm = T), lty = 3)
 identify(algae$NH4)
 ```
 
-![plot of chunk unnamed-chunk-4](figure/unnamed-chunk-4.png) 
+![plot of chunk ch2plot1](figure/ch2plot1.png) 
 
 ```
 ## integer(0)
@@ -269,7 +280,7 @@ plot(algae$NH4, xlab = "")
 clicked.lines <- identify(algae$NH4)
 ```
 
-![plot of chunk unnamed-chunk-5](figure/unnamed-chunk-5.png) 
+![plot of chunk ch2plot2](figure/ch2plot2.png) 
 
 ```r
 algae[clicked.lines, ]
@@ -327,7 +338,7 @@ library(lattice)
 bwplot(size ~ a1, data = algae, ylab = "River Size", xlab = "Algal A1")
 ```
 
-![plot of chunk unnamed-chunk-8](figure/unnamed-chunk-8.png) 
+![plot of chunk ch2bwplot1](figure/ch2bwplot1.png) 
 
 
 - `bwplot()`:
@@ -341,15 +352,7 @@ library(Hmisc)
 ```
 
 ```
-## Loading required package: survival
-## Loading required package: splines
-## Loading required package: Formula
-## 
-## Attaching package: 'Hmisc'
-## 
-## The following objects are masked from 'package:base':
-## 
-##     format.pval, round.POSIXt, trunc.POSIXt, units
+## Error: there is no package called 'Hmisc'
 ```
 
 ```r
@@ -357,7 +360,9 @@ bwplot(size ~ a1, data = algae, panel = panel.bpplot, probs = seq(0.01, 0.49,
     by = 0.01), datadensity = TRUE, ylab = "River Size", xlab = "Algal A1")
 ```
 
-![plot of chunk unnamed-chunk-9](figure/unnamed-chunk-9.png) 
+```
+## Error: ÕÒ²»µ½¶ÔÏó'panel.bpplot'
+```
 
 
 - The dots are the mean value of the frequency of the algal for the different river sizes
@@ -373,7 +378,7 @@ minO2 <- equal.count(na.omit(algae$mnO2), number = 4, overlap = 1/5)
 stripplot(season ~ a3 | minO2, data = algae[!is.na(algae$mnO2), ])
 ```
 
-![plot of chunk unnamed-chunk-10](figure/unnamed-chunk-10.png) 
+![plot of chunk ch2stripplot1](figure/ch2stripplot1.png) 
 
 
 - `equal.count()`: creates a factorized version of the continuous variable mnO2
@@ -452,7 +457,7 @@ summary(lm.a1)
 
 #### How `R` handled the three nominal variables:
 
-`R` will create a set of auxiliary variables. Namely, for each factor variable with `k` levels, `R` will create `k???1` auxiliary variables. These variables have the values `0` or `1`. A value of `1` means that the associated value of the factor is â€œpresentâ€, and that will also mean that the other auxiliary variables will have the value `0`. If all `k???1` variables are `0`, then it means that the factor variable has the remaining `k`th value.
+`R` will create a set of auxiliary variables. Namely, for each factor variable with `k` levels, `R` will create `kâˆ?1` auxiliary variables. These variables have the values `0` or `1`. A value of `1` means that the associated value of the factor is â€œpresentâ€?, and that will also mean that the other auxiliary variables will have the value `0`. If all `kâˆ?1` variables are `0`, then it means that the factor variable has the remaining `k`th value.
 
 We can see that `R` has created three auxiliary variables for the factorseason(seasonspring, seasonsummer, and `seasonwinter`). This means that if we have a water sample with the value `â€œautumnâ€` in the variable season, all three auxiliary variables will be set to zero.
 
@@ -464,7 +469,7 @@ For each coefficient (variable) of the multiple regression equation, `R` will sh
 
 In order to check the importance of each coefficient, we can test the hypothesis that each of them is null, that is, H0:Î²i = 0. To test this hypothesis, the t-test is normally used. `R` calculates at value, which is defined as the ratio between the coefficient value and its standard error. `R` will show us a column `Pr(>|t|)` associated with each coefficient with the level at which the hypothesis that the coefficient is null is rejected. Thus a value of 0.0001 has the meaning that we are 99.99% confident that the coefficient is not null. 
 
-Another piece of relevant diagnostics information outputted by `R` are the `R2` coefficients (multiple and adjusted). These indicate the degree of fit of the model to the data, that is, the proportion of variance in the data that is explained by the model. Values near 1 are better (almost 100% explained variance) â€” while the smaller the values, the larger the lack of fit.
+Another piece of relevant diagnostics information outputted by `R` are the `R2` coefficients (multiple and adjusted). These indicate the degree of fit of the model to the data, that is, the proportion of variance in the data that is explained by the model. Values near 1 are better (almost 100% explained variance) â€? while the smaller the values, the larger the lack of fit.
 
 We can also test the null hypothesis that there is no dependence of the target variable on any of the explanatory variables, that is, H0:Î²1=Î²2=...=Î²m=0. The F-statistic can be used for this purpose by comparing it to a critical value. Rprovides the confidence level at which we are sure to reject this null hypothesis. Thus ap-level of 0.0001 means that we are 99.99% confident that the null hypothesis is not true. Usually, if the model fails this test (e.g., with apvalue that is considered too high, for example, higher than 0.1), it makes no sense to look at thet-tests on the individual coefficients.
 
@@ -475,7 +480,7 @@ We can issue a command like `plot(lm.a1)` to obtain a series of successive plots
 plot(lm.a1)
 ```
 
-![plot of chunk unnamed-chunk-14](figure/unnamed-chunk-141.png) ![plot of chunk unnamed-chunk-14](figure/unnamed-chunk-142.png) ![plot of chunk unnamed-chunk-14](figure/unnamed-chunk-143.png) ![plot of chunk unnamed-chunk-14](figure/unnamed-chunk-144.png) 
+![plot of chunk ch2plot3](figure/ch2plot31.png) ![plot of chunk ch2plot3](figure/ch2plot32.png) ![plot of chunk ch2plot3](figure/ch2plot33.png) ![plot of chunk ch2plot3](figure/ch2plot34.png) 
 
 
 We start our study of simplifying the linear model using the `anova()` function
@@ -577,7 +582,7 @@ anova(lm.a1, lm2.a1)
 ```
 
 
-This function performs an analysis of variance of the two models using an F-test to assess the significance of the differences. In this case, although the sum of the squared errors has decreased (???448), the comparison shows that the differences are not significant (a value of 0.6971 tells us that with only around 30% confidence we can say they are different).
+This function performs an analysis of variance of the two models using an F-test to assess the significance of the differences. In this case, although the sum of the squared errors has decreased (âˆ?448), the comparison shows that the differences are not significant (a value of 0.6971 tells us that with only around 30% confidence we can say they are different).
 
 In order to check if we can remove more coefficients, we would again use the `anova()`  function, applied to the `lm2.a1` model.
 

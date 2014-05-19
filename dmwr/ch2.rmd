@@ -141,7 +141,7 @@ qqPlot(algae$mxPH,main='Normal QQ plot of maximum pH')
   
 #### Visualize oPO4
 
-```{r}
+```{r ch2boxplot1}
 boxplot(algae$oPO4, ylab = "Orthophosphate (oPO4)")
 rug(jitter(algae$oPO4), side = 2)
 abline(h = mean(algae$oPO4, na.rm = T), lty = 2)
@@ -157,7 +157,7 @@ abline(h = mean(algae$oPO4, na.rm = T), lty = 2)
 
 #### identify the water sample with outliers
 
-```{r}
+```{r ch2plot1}
 plot(algae$NH4, xlab = "")
 abline(h = mean(algae$NH4, na.rm = T), lty = 1)
 abline(h = mean(algae$NH4, na.rm = T) + sd(algae$NH4, na.rm = T),
@@ -170,7 +170,7 @@ identify(algae$NH4)
 
 #### inspect the respective observations in the `algae` data frame
 
-```{r}
+```{r ch2plot2}
 plot(algae$NH4, xlab = "")
 clicked.lines <- identify(algae$NH4)
 algae[clicked.lines, ]
@@ -193,7 +193,7 @@ algae[!is.na(algae$NH4) & algae$NH4 > 19000,]
 
 #### explore by `lattice` package
 
-```{r}
+```{r ch2bwplot1}
 library(lattice)
 bwplot(size ~ a1, data=algae, ylab='River Size',xlab='Algal A1')
 ```
@@ -203,7 +203,7 @@ bwplot(size ~ a1, data=algae, ylab='River Size',xlab='Algal A1')
 
 ### explor by `Hmisc` package version of `bwplot`
 
-```{r}
+```{r ch2bwplot2}
 library(Hmisc)
 bwplot(size ~ a1, data=algae,panel=panel.bpplot,
        probs=seq(.01,.49,by=.01), datadensity=TRUE,
@@ -217,7 +217,7 @@ bwplot(size ~ a1, data=algae,panel=panel.bpplot,
 
 #### observing the behavior of the frequency of algal `a3` conditioned by season and mnO2, this latter being a continuous variable
 
-```{r}
+```{r ch2stripplot1}
 minO2 <- equal.count(na.omit(algae$mnO2),
                      number=4,overlap=1/5)
 stripplot(season ~ a3|minO2,
@@ -259,7 +259,7 @@ summary(lm.a1)
 
 #### How `R` handled the three nominal variables:
 
-`R` will create a set of auxiliary variables. Namely, for each factor variable with `k` levels, `R` will create `k−1` auxiliary variables. These variables have the values `0` or `1`. A value of `1` means that the associated value of the factor is “present”, and that will also mean that the other auxiliary variables will have the value `0`. If all `k−1` variables are `0`, then it means that the factor variable has the remaining `k`th value.
+`R` will create a set of auxiliary variables. Namely, for each factor variable with `k` levels, `R` will create `k�?1` auxiliary variables. These variables have the values `0` or `1`. A value of `1` means that the associated value of the factor is “present�?, and that will also mean that the other auxiliary variables will have the value `0`. If all `k�?1` variables are `0`, then it means that the factor variable has the remaining `k`th value.
 
 We can see that `R` has created three auxiliary variables for the factorseason(seasonspring, seasonsummer, and `seasonwinter`). This means that if we have a water sample with the value `“autumn”` in the variable season, all three auxiliary variables will be set to zero.
 
@@ -271,13 +271,13 @@ For each coefficient (variable) of the multiple regression equation, `R` will sh
 
 In order to check the importance of each coefficient, we can test the hypothesis that each of them is null, that is, H0:βi = 0. To test this hypothesis, the t-test is normally used. `R` calculates at value, which is defined as the ratio between the coefficient value and its standard error. `R` will show us a column `Pr(>|t|)` associated with each coefficient with the level at which the hypothesis that the coefficient is null is rejected. Thus a value of 0.0001 has the meaning that we are 99.99% confident that the coefficient is not null. 
 
-Another piece of relevant diagnostics information outputted by `R` are the `R2` coefficients (multiple and adjusted). These indicate the degree of fit of the model to the data, that is, the proportion of variance in the data that is explained by the model. Values near 1 are better (almost 100% explained variance) — while the smaller the values, the larger the lack of fit.
+Another piece of relevant diagnostics information outputted by `R` are the `R2` coefficients (multiple and adjusted). These indicate the degree of fit of the model to the data, that is, the proportion of variance in the data that is explained by the model. Values near 1 are better (almost 100% explained variance) �? while the smaller the values, the larger the lack of fit.
 
 We can also test the null hypothesis that there is no dependence of the target variable on any of the explanatory variables, that is, H0:β1=β2=...=βm=0. The F-statistic can be used for this purpose by comparing it to a critical value. Rprovides the confidence level at which we are sure to reject this null hypothesis. Thus ap-level of 0.0001 means that we are 99.99% confident that the null hypothesis is not true. Usually, if the model fails this test (e.g., with apvalue that is considered too high, for example, higher than 0.1), it makes no sense to look at thet-tests on the individual coefficients.
 
 We can issue a command like `plot(lm.a1)` to obtain a series of successive plots that help in understanding the performance of the model.
 
-```{r}
+```{r ch2plot3}
 plot(lm.a1)
 ```
 
@@ -306,7 +306,7 @@ can carry out a more formal comparison between the two models by using again the
 anova(lm.a1,lm2.a1)
 ```
 
-This function performs an analysis of variance of the two models using an F-test to assess the significance of the differences. In this case, although the sum of the squared errors has decreased (−448), the comparison shows that the differences are not significant (a value of 0.6971 tells us that with only around 30% confidence we can say they are different).
+This function performs an analysis of variance of the two models using an F-test to assess the significance of the differences. In this case, although the sum of the squared errors has decreased (�?448), the comparison shows that the differences are not significant (a value of 0.6971 tells us that with only around 30% confidence we can say they are different).
 
 In order to check if we can remove more coefficients, we would again use the `anova()`  function, applied to the `lm2.a1` model.
 
