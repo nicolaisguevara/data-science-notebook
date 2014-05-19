@@ -1,5 +1,5 @@
-Data Mining with R, Learning with Case Studies
-==============================================
+Data Mining with R
+==================
 
 Book by Liús Torgo
 
@@ -8,7 +8,7 @@ Book by Liús Torgo
 1. Introduction
   1. A Short Introduction to R
   2. A Short Introduction to MySQL
-2. Predicting Algae Blooms
+2. [Predicting Algae Blooms](ch2.md)
 3. Predicting Stock Market Returns
 4. Detecting Fraudulent Transactions
 5. Classifying Microarray Samples
