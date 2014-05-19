@@ -1,0 +1,335 @@
+Chapter 2 Predicting Algae Blooms
+=================================
+
+This case study will introduce you to some of the basic tasks of any data mining
+problem:
+
+- data pre-processing
+- exploratory data analysis
+- predictive model construction
+
+### 2.1 Problem description and objectives
+
+#### Background:
+
+High concentrations of certain harmful algae in rivers is a serious ecological
+problem with a strong impact not only on river lifeforms, but also on water
+quality. Being able to monitor and perform an early forecast of algae blooms is
+essential to improve the quality of rivers.
+
+#### Sample:
+
+7 water samples were collected in different European rivers at different times during a period of approximately one year. For each water sample, different chemical properties were measured as well as the frequency of occurence of 7 harmful algae. Some other characteristics of the water collection process were also stored, such as the season of the year, the river size, and the river speed.
+
+#### Motivation:
+
+*One of the main* motivations behind this application lies in the fact that chemical monitoring is cheap and easily automated, while the biological analysis of the sample to identify the algae that are present in the water involves microscopic examination, requires trained manpower and is therefore both expensive and slow.
+
+Obtaining models that are able to accurately predict the algae frequencies based on chemical properties would facilitate the creation of cheap and automated systems for monitoring harmful algae blooms.
+
+*Another* objective of this study is to provide a better understanding of the factors influencing the algae frequencies. namely, we want to understand how these freuqencies are related to certain chemical attributes of water samples as well as other characteristics of the sample (like season of the year, type of river, etc.).
+
+### 2.2 Data Description
+
+The data consists of two separate text files:
+
+- training set: `"Analysis.txt"` with 200 water samples
+- test set: `"Eval.txt"` with 140 water samples
+  - the information concerning the values of the concentrations of the 7 algae was ommitted
+  - the *goal* is to predict the frequencies of the 7 algae for these 140 samples
+
+Each water sample is described in 11 variables:
+
+- 3 are nominal
+  - season of the year when the sample was collected as `season`
+  - the size of the river as `size`
+  - the water speed of the river as `speed`
+- 8 are values of different chemical parameters measured in the water sample
+  - maximum pH value squared as `mxPH`
+  - minimum value of O2 (Oxygen) as `mnO2`
+  - mean value of Cl (Chloride) as `Cl`
+  - mean value of NO3- (Nitrates) as `NO3`
+  - mean value of NH4+ (Ammonium) as `NH4`
+  - mean of PO43- (Orthophosphate) as `oPO4`
+  - mean of total PO4 (Phosphate) as `PO4`
+  - mean of Chlorophyll as `Chla`
+
+Associated with each of these water samples are 7 frequency numbers of different harmful algae found in the water samples. No information is given regarding which algae were identified.
+
+### 2.3 Loading the data into `R`
+
+#### Load data from file
+
+Firtsly check the current working directory of running `R` session by `getwd()`, or we can change the directory by `setwd()`.
+
+After downloading the data files into the directory, start by loading into `R the data from the `"Analysis.txt"` file (the training data).
+
+```
+algae <- read.table('Analysis.txt',
+                    header=F,
+                    dec='.'
+                    col.name=c('season','size','speed','mxPH','mnO2','Cl',
+                               'NO3','NH4','oPO4','PO4','Chla',
+                               'a1','a2','a3','a4','a5','a6','a7'),
+                    na.strings=C('XXXXXXX'))
+```
+
+- `read.table`: function that can be used to read data contained in file. The result of this function is a data frame.
+- `header=F`: the file to be read does not include a first line the variables names (default)
+- `dec='.'`: the numbers used the `'.'` character to separate decimal places (default)
+- `col.names`: provide a vector with the names to give to the variables whose values are being read
+- na.strings`: indicate a vector of strings that are to be interpreted as unknown values. These values are represented internally in `R` by the value `NA`
+
+#### Load data rom package
+
+Simply load the book package `DMwR` to have a data frame named `algae` available for use. This data frame contains the first set of 200 observations mentioned above.
+
+```{r}
+library(DMwR)
+head(algae)
+```
+
+### 2.4 Data Visualization and Summarization
+
+It is always a good idea to start our analysis with some kind of exploratory data analysis. A first idea of the statistical propeties of the data can be obtained through a summary of its descriptive statistics:
+
+```{r}
+summary(algae)
+```
+
+- nominal variables: provides frequency counts for each possible value
+- numeric variables: gives a series of statistics like mean, median, quartiles information and exteme values. these statistics provide a first idea of the distribution of the variable values.
+- missing values: shows the frequency counts of `NA` if a variable haves some unknown values
+
+*TIP* By observing the difference between medians and means, as well as the inter-quartile range (3rd quartile minus the 1st quartile), we can get an idea of the skewness of the distribution and also its spread.
+
+#### observe the distribution graphically
+
+```{r ch2hist1}
+hist(algae$mxPH, prob = T)
+```
+
+- `hist()`: function for generating histogram
+- `algae$mxPH`: values of variable `mxPH` from data frame `algae`
+- `prob=T`: show probabilities for each interval, while omitting this parameter setting would give frequency counts
+
+#### Q-Q plots
+
+The function `qq.plot()` ,in the `car` (Fox, 2009) package, obtains normal Q-Q plots with a slightly more sophisticated version of the histogram
+
+```{r ch2hist2}
+library(car)
+par(mfrow=c(1, 2))
+hist(algae$mxPH, prob=T, xlab='',
+     main='Histogram of maximum pH value',ylim=0:1)
+lines(density(algae$mxPH,na.rm=T))
+rug(jitter(algae$mxPH))
+qqPlot(algae$mxPH,main='Normal QQ plot of maximum pH')
+```
+
+- `par()`: set several parameters of the `R` graphics system
+- `hist()`:
+  - `xlab=''`: remove X-axis label
+  - `main='XXX'`: change title
+  - `ylim=0:1`: limits for the Y-axis
+- `lines(density(mxPH,na.rm=T))`: plots a smooth version of the histogram (a kernel density estimate of the distribution of the variable).
+  - `na.rm=T`: indicates that `NA` values should not be considered in the function calculation
+- `rug(jitter(algae$mxPH))`: plots the real values of the variable near the X-axis, allowing easy spotting of outliers
+- `qqPlot()`:
+  - plots the variable values against the theoretical quantiles of a normal distribution(solid black line)
+  - plots an envelope with the 95% confidence interval of the normal distribution (dashed lines)
+  
+#### Visualize oPO4
+
+```{r}
+boxplot(algae$oPO4, ylab = "Orthophosphate (oPO4)")
+rug(jitter(algae$oPO4), side = 2)
+abline(h = mean(algae$oPO4, na.rm = T), lty = 2)
+```
+
+- `boxplot`: draws a box plot
+  - vertical limits being the 1st and 3rd qurtiles
+  - the horizontal line represents the median value of the variable
+  - the small horizontal dash above the box is the largest observation that is less than or equal to the 3rd quartile plus 1.5 x `r` where `r` is the inter-quartile range
+  - the circles below or above these small dashes represent observations that are extremely low (high) compared to all others, and are usually considered outliers
+- `rug()`: `side=2` means on Y-axis
+- `abline`: draw a horizontal line at the mean value of the variable, which is obtained using the function `mean`. By comparing this line with the line inside the box indicating the median, we can conclude that the presence of several outliers has distorted the value of the mean as a statistic of centrality
+
+#### identify the water sample with outliers
+
+```{r}
+plot(algae$NH4, xlab = "")
+abline(h = mean(algae$NH4, na.rm = T), lty = 1)
+abline(h = mean(algae$NH4, na.rm = T) + sd(algae$NH4, na.rm = T),
+ lty=2)
+abline(h = median(algae$NH4, na.rm = T), lty = 3)
+identify(algae$NH4)
+```
+
+- `identify()`: allows user to interactively click on the plotted dots with the left mouse button (not working)
+
+#### inspect the respective observations in the `algae` data frame
+
+```{r}
+plot(algae$NH4, xlab = "")
+clicked.lines <- identify(algae$NH4)
+algae[clicked.lines, ]
+```
+
+or without graphs
+
+```{r}
+algae[algae$NH4 > 19000, ]
+```
+
+- uses a logical expression `>` to as a row seletor.
+
+To avoid `NA` by
+```{r}
+algae[!is.na(algae$NH4) & algae$NH4 > 19000,]
+```
+
+- `is.na()` produces a vector of Boolean values (`TRUE` or `FALSE`). An element of this vector is `TRUE` when NH4 is `NA`. The construction `!is.na(algae$NH4)` thus returns a vector of Boolean values that are `TRUE` in positions corresponding to rows where NH4 is unknown.
+
+#### explore by `lattice` package
+
+```{r}
+library(lattice)
+bwplot(size ~ a1, data=algae, ylab='River Size',xlab='Algal A1')
+```
+
+- `bwplot()`:
+  - `size ~ a1`: read as "plot `a1` for each value of `size`"
+
+### explor by `Hmisc` package version of `bwplot`
+
+```{r}
+library(Hmisc)
+bwplot(size ~ a1, data=algae,panel=panel.bpplot,
+       probs=seq(.01,.49,by=.01), datadensity=TRUE,
+       ylab='River Size',xlab='Algal A1')
+```
+
+- The dots are the mean value of the frequency of the algal for the different river sizes
+- Vertical lines represent the 1st quartile, median, and 3rd quartile, in that order
+- Small dashes shows the actual values of the data
+- Quantile plots show the information of the distribution of these values
+
+#### observing the behavior of the frequency of algal `a3` conditioned by season and mnO2, this latter being a continuous variable
+
+```{r}
+minO2 <- equal.count(na.omit(algae$mnO2),
+                     number=4,overlap=1/5)
+stripplot(season ~ a3|minO2,
+          data=algae[!is.na(algae$mnO2),])
+```
+
+- `equal.count()`: creates a factorized version of the continuous variable mnO2
+  - `na.omit()`: removes any `NA` value from a vector
+  - `number=4`: set the number of desired bins
+  - `overlap=1/5`: sets the overlap between the bins near their repective boundaries
+- `stripplot()` of `lattice` package: creates a graph containing the actual values of a variable, in different strips depending on another variable (in this case season)
+
+### 2.5 Unkown Values
+
+### 2.6 Obtaining Prediction Models
+
+#### Multiple Linear Regression
+
+```{r}
+data(algae)
+algae <- algae[-manyNAs(algae), ]
+clean.algae <- knnImputation(algae,k=10)
+```
+
+- `clean.algae`: data frame with no missing variable values
+
+```{r}
+lm.a1 <- lm(a1 ~ ., data = clean.algae[, 1:12])
+```
+
+- `lm()`: obtains a linear regression model
+  - `a1 ~ .`: indicates the functional form of the model. It states that we want a model that predicts the variable a1 using all other variables present in the data, which is the meaning of the `.` dot character.
+    - for example, if we want a model to predict a1 as a function of the variable mxPH and NH4, we should have indicated the model as `"a1 ~ mxPH + NH4"`
+  - `data`: sets the data sample to be used to obtain the model
+
+```{r}
+summary(lm.a1)
+```
+
+#### How `R` handled the three nominal variables:
+
+`R` will create a set of auxiliary variables. Namely, for each factor variable with `k` levels, `R` will create `k−1` auxiliary variables. These variables have the values `0` or `1`. A value of `1` means that the associated value of the factor is “present”, and that will also mean that the other auxiliary variables will have the value `0`. If all `k−1` variables are `0`, then it means that the factor variable has the remaining `k`th value.
+
+We can see that `R` has created three auxiliary variables for the factorseason(seasonspring, seasonsummer, and `seasonwinter`). This means that if we have a water sample with the value `“autumn”` in the variable season, all three auxiliary variables will be set to zero.
+
+#### Summary of the linear model
+
+We have information concerning the residuals (i.e., the errors) of the fit of the linear model to the used data. These residuals should have a mean zero and should have a normal distribution (and obviously be as small as possible!)
+
+For each coefficient (variable) of the multiple regression equation, `R` will show its value and also its standard error (an estimate of the variability of these coefficients).
+
+In order to check the importance of each coefficient, we can test the hypothesis that each of them is null, that is, H0:βi = 0. To test this hypothesis, the t-test is normally used. `R` calculates at value, which is defined as the ratio between the coefficient value and its standard error. `R` will show us a column `Pr(>|t|)` associated with each coefficient with the level at which the hypothesis that the coefficient is null is rejected. Thus a value of 0.0001 has the meaning that we are 99.99% confident that the coefficient is not null. 
+
+Another piece of relevant diagnostics information outputted by `R` are the `R2` coefficients (multiple and adjusted). These indicate the degree of fit of the model to the data, that is, the proportion of variance in the data that is explained by the model. Values near 1 are better (almost 100% explained variance) — while the smaller the values, the larger the lack of fit.
+
+We can also test the null hypothesis that there is no dependence of the target variable on any of the explanatory variables, that is, H0:β1=β2=...=βm=0. The F-statistic can be used for this purpose by comparing it to a critical value. Rprovides the confidence level at which we are sure to reject this null hypothesis. Thus ap-level of 0.0001 means that we are 99.99% confident that the null hypothesis is not true. Usually, if the model fails this test (e.g., with apvalue that is considered too high, for example, higher than 0.1), it makes no sense to look at thet-tests on the individual coefficients.
+
+We can issue a command like `plot(lm.a1)` to obtain a series of successive plots that help in understanding the performance of the model.
+
+```{r}
+plot(lm.a1)
+```
+
+We start our study of simplifying the linear model using the `anova()` function
+
+```{r}
+anova(lm.a1)
+```
+
+These results indicate that the variableseason is the variable that least contributes to the reduction of the fitting error of the model. Let us remove it from the model:
+
+```{r}
+lm2.a1 <- update(lm.a1,.~.-season)
+```
+
+- `update()`: used to perform small changes to an existing linear model. In this case we use it to obtain a new model by removing the variable `season` from the `lm.a1model`.
+
+```{r}
+summary(lm2.a1)
+```
+
+The fit has improved a bit (32.8%) but it is still not too impressive. We
+can carry out a more formal comparison between the two models by using again the `anova()` function, but this time with both models as arguments.
+
+```{r}
+anova(lm.a1,lm2.a1)
+```
+
+This function performs an analysis of variance of the two models using an F-test to assess the significance of the differences. In this case, although the sum of the squared errors has decreased (−448), the comparison shows that the differences are not significant (a value of 0.6971 tells us that with only around 30% confidence we can say they are different).
+
+In order to check if we can remove more coefficients, we would again use the `anova()`  function, applied to the `lm2.a1` model.
+
+#### creates a linear model that results from applying the backward elimination method to the initial model we have obtained (`lm.a1`)
+
+```{r}
+final.lm <- step(lm.a1)
+```
+
+- `step()`: uses the Akaike Information Criterion (AIC) to perform model search
+
+```{r}
+summary(final.lm)
+```
+
+The proportion of variance explained by this model is still not very interesting. This kind of proportion is usually considered a sign that the linearity assumptions of this model are inadequate for the domain.
+
+### 2.6.2 Regression Trees
+
+```{r}
+library(rpart)
+data(algae)
+algae <- algae[-manyNAs(algae), ]
+rt.a1 <- rpart(a1 ~ ., data = algae[, 1:12])
+```
+
