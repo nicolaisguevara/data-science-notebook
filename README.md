@@ -1,6 +1,7 @@
 data-science-notebook
 =====================
 
+- [Data Mining with R, Learning with Case Studies](dmwr/README.md) by Luis Torgo
 - [Johns Hopkins Unviersity Data Science Courses](https://github.com/helio9cn/jhu-data-science/)
   - The Data Scientist’s Toolbox
   - R Programming
