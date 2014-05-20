@@ -58,7 +58,7 @@ The parameters of your model are the ![$\theta_{j}$](http://latex.codecogs.com/g
 
 With each step of gradient descent, your parameters ![$\theta_j$](http://latex.codecogs.com/gif.latex?%5Ctheta_%7Bj%7D) come closer to the optimal values that will achieve the lowest cost ![$J(\theta)$](http://latex.codecogs.com/gif.latex?J%28%5Ctheta%29).
 
-> We store each example as a row in the the `X` matrix in Octave. To take into account the intercept term ($\theta_{0}$), we add an additional first column to `X` and set it to all ones. This allows us to treat $\theta_{0}$ as simply another "feature".
+*TIP* We store each example as a row in the the `X` matrix in Octave. To take into account the intercept term (![$\theta_{0}$](http://latex.codecogs.com/gif.latex?%5Ctheta_%7B0%7D)), we add an additional first column to `X` and set it to all ones. This allows us to treat ![$\theta_{0}$](http://latex.codecogs.com/gif.latex?%5Ctheta_%7B0%7D) as simply another "feature".
 
 #### initialize parameters
 
@@ -71,7 +71,7 @@ iterations = 1500;
 alpha = 0.01;
 ```
 
-#### compute the cost $J(\theta)$
+#### compute the cost ![$J(\theta)$](http://latex.codecogs.com/gif.latex?J%28%5Ctheta%29)
 
 ```matlab
 J = sum((X * theta - y) .^ 2) / (2 * size(X, 1));	% Compute cost for X and y with theta
