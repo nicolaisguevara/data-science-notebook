@@ -5,4 +5,4 @@ A Coursera MOOC by Andrew Ng
 
 ### Contents
 
-- [Programming Exercises 1](ex1.md)
+- [Programming Exercises 1](ex1.md) - [1.2](ex1.2.src.md)
