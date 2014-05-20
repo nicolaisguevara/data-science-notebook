@@ -107,7 +107,7 @@ end
 end
 ```
 
-### Visualizing $J(\theta)$
+### Visualizing ![$J(\theta)$](http://latex.codecogs.com/gif.latex?J%28%5Ctheta%29)
 
 ```matlab
 % initialize J_vals to a matrix of 0's
