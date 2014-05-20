@@ -44,7 +44,7 @@ xlabel('Population of City in 10,000s');	% Set the x-axis label
 
 ### 2.2 Gradient Descent
 
-The objective of linear regression is to minimize the cost function: $$ J(\theta) = \frac{1}{2m}\sum_{i=1}^{m}(h_{\theta}(x^{(i)})-y^{(i)})^2 $$ where the hypothesis is given by the linear model $$ h_{\theta}(x)=\theta^{T}x=\theta_{0}+\theta_{1}x $$
+The objective of linear regression is to minimize the cost function: ![$$ J(\theta) = \frac{1}{2m}\sum_{i=1}^{m}(h_{\theta}(x^{(i)})-y^{(i)})^2 $$](http://latex.codecogs.com/gif.latex?J%28%5Ctheta%29%20%3D%20%5Cfrac%7B1%7D%7B2m%7D%5Csum_%7Bi%3D1%7D%5E%7Bm%7D%28h_%7B%5Ctheta%7D%28x%5E%7B%28i%29%7D%29-y%5E%7B%28i%29%7D%29%5E2) where the hypothesis is given by the linear model ![$$ h_{\theta}(x)=\theta^{T}x=\theta_{0}+\theta_{1}x $$](http://latex.codecogs.com/gif.latex?h_%7B%5Ctheta%7D%28x%29%3D%5Ctheta%5E%7BT%7Dx%3D%5Ctheta_%7B0%7D&plus;%5Ctheta_%7B1%7Dx)
 
 The parameters of your model are the $\theta_{j}$ values. These are the values you will adjust to minimize cost $J(\theta)$. One way to do this is to use the batch gradient descent algorithm. In batch gradient descent, each iteration performs the update simultaneously for all j $$ \theta_{j}:=\theta_{j}-\alpha\frac{1}{m}\sum_{i=1}^{m}(h_{\theta}(x^{(i)})-y^{(i)})x_{j}^{(i)} $$
 
