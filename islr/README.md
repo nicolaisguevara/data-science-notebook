@@ -1,5 +1,5 @@
-An Introduction to Statistical Learning with Applications in R
-==============================================================
+An Introduction to Statistical Learning
+=======================================
 
 Book by Gareth James, Daniela Witten, Trevor Hastie and Robert Tibshirani
 
