@@ -22,6 +22,9 @@ anova(lm.a1)
 ## update model by removing season variable
 lm2.a1 <- update(lm.a1, . ~ . - season)
 
+## view the new model
+summary(lm2.a1)
+
 ## compare lm.a1 with lm2.a1
 anova(lm.a1, lm2.a1)
 
