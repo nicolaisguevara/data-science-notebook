@@ -31,10 +31,14 @@ rt2.a1
 ## visualize new tree
 prettyTree(rt2.a1)
 
-## rpartXse() to automatical run the process with se set to 1 as default
-## rt.a1 <- rpartXse(a1 ~ ., data=algae[, 1:12])
+set.seed(1234) # Just to ensure same results as in the book
+
+## use rpartXse() to automatical run the process with se set to 1 as default
+(rt.a1 <- rpartXse(a1 ~ .,data=algae[,1:12]))
 
 ## use snip.rpart() to interactively prune the tree
 first.tree <- rpart(a1 ~ ., data=algae[, 1:12])
 my.tree <- snip.rpart(first.tree, c(4, 7))
+
+## view pruned tree
 prettyTree(my.tree)
