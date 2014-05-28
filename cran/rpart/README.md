@@ -1,6 +1,8 @@
 {rpart}
 =======
 
+Recursive Partitioning and Regression Trees
+
 ### `rpart`
 
 ```R
