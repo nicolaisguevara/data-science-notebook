@@ -5,14 +5,14 @@ Recursive Partitioning and Regression Trees
 
 ### `rpart`
 
-```R
+```
 rpart(formula, data, weights, subset, na.action = na.rpart, method,
       model = FALSE, x = FALSE, y = TRUE, parms, control, cost, ...)
 ```
 
 *Example*
 
-```R
+```
 fit <- rpart(Kyphosis ~ Age + Number + Start, data = kyphosis)
 fit2 <- rpart(Kyphosis ~ Age + Number + Start, data = kyphosis,
               parms = list(prior = c(.65,.35), split = "information"))
@@ -27,7 +27,7 @@ text(fit2, use.n = TRUE)
 
 ### `predict.rpart`
 
-```R
+```
 ## S3 method for class 'rpart'
 predict(object, newdata,
        type = c("vector", "prob", "class", "matrix"),
@@ -36,7 +36,7 @@ predict(object, newdata,
 
 *Example*
 
-```R
+```
 z.auto <- rpart(Mileage ~ Weight, car.test.frame)
 predict(z.auto)
 
@@ -55,5 +55,3 @@ table(predict(fit, iris[-sub,], type = "class"), iris[-sub, "Species"])
 ### Reference
 
 http://stat.ethz.ch/R-manual/R-devel/library/rpart/html/00Index.html
-
-### Usage
