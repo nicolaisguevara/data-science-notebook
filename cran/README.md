@@ -3,4 +3,5 @@ The Comprehensive R Archive Network (CRAN)
 
 ### Contents
 
-- [\{randomForest\}](randomForest/)
+- [\{rpart\}](rpart/): Recursive Partitioning and Regression Trees
+- [\{randomForest\}](randomForest/): Classification and Regression with Random Forest
