@@ -8,9 +8,9 @@ Book by Liús Torgo
 1. Introduction
   1. A Short Introduction to R
   2. A Short Introduction to MySQL
-2. [Predicting Algae Blooms](ch2.md)
-3. Predicting Stock Market Returns
-4. Detecting Fraudulent Transactions
+2. [Predicting Algae Blooms](algae/)
+3. [Predicting Stock Market Returns](stock/)
+4. [Detecting Fraudulent Transactions](fraud/)
 5. Classifying Microarray Samples
 
 ### Packages `DMwR`
