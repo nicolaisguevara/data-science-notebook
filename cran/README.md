@@ -7,6 +7,7 @@ The Comprehensive R Archive Network (CRAN)
 - [\{randomForest\}](randomForest/): Classification and Regression with Random Forest
 - \{stats\}
   - kmeans(): K-Means Clustering
+- [\{mlbench\}](mlbench/): Machine Learning Benchmark Problems
 
 ### CRAN Task Views
 
