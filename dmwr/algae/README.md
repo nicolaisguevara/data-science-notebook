@@ -7,3 +7,4 @@ Chapter 2 Predicting Algae Blooms
 - [regression tree](rt.r)
 - [random forest](rf.r)
 - [cross validation](cv.r)
+- [evaluation](eval.r)
