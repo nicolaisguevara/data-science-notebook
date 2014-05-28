@@ -1,10 +1,12 @@
 The Comprehensive R Archive Network (CRAN)
 ==========================================
 
-### Contents
+### Packages
 
 - [\{rpart\}](rpart/): Recursive Partitioning and Regression Trees
 - [\{randomForest\}](randomForest/): Classification and Regression with Random Forest
+- \{stats\}
+  - kmeans(): K-Means Clustering
 
 ### CRAN Task Views
 
