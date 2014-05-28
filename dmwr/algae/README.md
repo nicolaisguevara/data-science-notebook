@@ -10,7 +10,7 @@ Chapter 2 Predicting Algae Blooms
 - [cross validation and build models](cv.r)
 - [prediction](pred.r)
 
-### Conclusion
+### Summary
 
 - Data visualization
 - Descriptive statistics
