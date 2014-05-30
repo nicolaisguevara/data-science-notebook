@@ -2,6 +2,9 @@ Formulas
 ========
 
 - [Random Variables](random-variables.md)
+  - CDF
+  - PMF
+  - PDF
 - [Expectation](expectation.md)
   - mean
   - variance
@@ -20,5 +23,8 @@ Formulas
   - covariance
   - correlation
 - [Bias-Variance Trade-off](bias-variance.md)
+  - Bias
+  - Variance
 - [Regression](regression.md)
+  - Least Squares
 - [Optimization](optimization.md)
