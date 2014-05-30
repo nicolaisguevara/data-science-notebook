@@ -3,8 +3,10 @@ The Comprehensive R Archive Network (CRAN)
 
 ### Packages
 
-- [\{rpart\}](rpart/): Recursive Partitioning and Regression Trees
+- Classification and Regression Tree (CART):
+  - [\{rpart\}](rpart/): Recursive Partitioning and Regression Trees
   - \{rpart.plot}: Plot rpart models
+  - \{party\}: A Laboratory for Recursive Partytioning
 - \{tree\}: Classiﬁcation and regression trees
 - [\{randomForest\}](randomForest/): Classification and Regression with Random Forest
 - \{stats\}
@@ -18,6 +20,7 @@ The Comprehensive R Archive Network (CRAN)
 - \{ISLR\}: An Introduction to Statistical Learning with Applications in R
 - \{DMwR\}: Data Mining with R
 - \{HSAUR\}: A Handbook of Statistical Analyses Using R
+- \{KernSmooth\}: KernKernel Smoothing
 
 ### CRAN Task Views
 
