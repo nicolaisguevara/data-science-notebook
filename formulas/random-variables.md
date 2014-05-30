@@ -29,6 +29,8 @@ probability mass function or probability function if X is discrete that it takes
 
 probability density function if X is continuous
 
+![f_X(x)=F_X'(x)](http://latex.codecogs.com/gif.latex?f_X%28x%29%3DF_X%27%28x%29)
+
 ![F_X(x)=\int_{-\infty}^{x}f_X(t)dt](http://latex.codecogs.com/gif.latex?F_X%28x%29%3D%5Cint_%7B-%5Cinfty%7D%5E%7Bx%7Df_X%28t%29dt)
 
 ### inverse CDF
