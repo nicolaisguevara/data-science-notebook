@@ -1,5 +1,5 @@
-Errors
-======
+Evaluation
+==========
 
 ### MAE
 
@@ -54,3 +54,7 @@ R-squared statistic
 ![R^2&=\frac{SSR}{SST}=1-\frac{SSE}{SST}](http://latex.codecogs.com/gif.latex?R%5E2%26%3D%5Cfrac%7BSSR%7D%7BSST%7D%3D1-%5Cfrac%7BSSE%7D%7BSST%7D)
 
 ![R^2&=\frac{\textrm{TSS}-\textrm{RSS}}{\textrm{TSS}}=1-\frac{\textrm{RSS}}{\textrm{TSS}}](http://latex.codecogs.com/gif.latex?R%5E2%26%3D%5Cfrac%7B%5Ctextrm%7BTSS%7D-%5Ctextrm%7BRSS%7D%7D%7B%5Ctextrm%7BTSS%7D%7D%3D1-%5Cfrac%7B%5Ctextrm%7BRSS%7D%7D%7B%5Ctextrm%7BTSS%7D%7D)
+
+### Correlation
+
+![\textrm{Cor}(X,Y)=\frac{\sum_{i=1}^{n}(x_i-\bar{x})(y_i-\bar{y})}{\sqrt{\sum_{i=1}^{n}(x_i-\bar{x})^2}\sqrt{\sum_{i=1}^{n}(y_i-\bar{y})^2}}](http://latex.codecogs.com/gif.latex?%5Ctextrm%7BCor%7D%28X%2CY%29%3D%5Cfrac%7B%5Csum_%7Bi%3D1%7D%5E%7Bn%7D%28x_i-%5Cbar%7Bx%7D%29%28y_i-%5Cbar%7By%7D%29%7D%7B%5Csqrt%7B%5Csum_%7Bi%3D1%7D%5E%7Bn%7D%28x_i-%5Cbar%7Bx%7D%29%5E2%7D%5Csqrt%7B%5Csum_%7Bi%3D1%7D%5E%7Bn%7D%28y_i-%5Cbar%7By%7D%29%5E2%7D%7D)
