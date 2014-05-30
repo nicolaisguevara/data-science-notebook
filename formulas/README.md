@@ -2,6 +2,7 @@ Formulas
 ========
 
 - [Random Variables](random-variables.md)
+- [Expectation](expectation.md)
   - mean
   - variance
   - sample mean
