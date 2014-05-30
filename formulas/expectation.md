@@ -1,4 +1,4 @@
-Random Variable
+Expectation
 ===============
 
 ### Mean
