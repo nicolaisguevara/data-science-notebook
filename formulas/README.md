@@ -1,12 +1,23 @@
 Formulas
 ========
 
-- [Errors](errors.md)
-  - SSE
+- [Random Variables](random-variables.md)
+  - mean
+  - variance
+  - sample mean
+  - sample variance
+  - covariance
+  - correlation
+- [Evaluation](evaluation.md)
+  - MAE
   - MSE
   - RMSE
-  - MAE
-  - SST
-  - SSR
+  - SSE/RSS
+  - SSR/ESS
+  - SST/TSS
   - R-squared
-- [Stochastic Gradient](sgd.md)
+  - covariance
+  - correlation
+- [Bias-Variance Trade-off](bias-variance.md)
+- [Regression](regression.md)
+- [Optimization](optimization.md)
