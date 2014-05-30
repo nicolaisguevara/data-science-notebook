@@ -3,6 +3,7 @@ data-science-notebook
 
 - [Data Mining with R, Learning with Case Studies](dmwr/) by Luis Torgo
 - [An Introduction to Statistical Learning with Applications in R](islr/) by Gareth James, Daniela Witten, Trevor Hastie and Robert Tibshirani
+- [All of Statistics](all-of-statistics/) by Larry Wasserman
 - [Machine Learning](coursera-ml/) by Andrew Ng
 - [Johns Hopkins Unviersity Data Science Courses](https://github.com/helio9cn/jhu-data-science/)
   - The Data Scientist’s Toolbox
