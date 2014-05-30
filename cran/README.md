@@ -17,6 +17,7 @@ The Comprehensive R Archive Network (CRAN)
 - \{MASS\}: Modern Applied Statistics with S
 - \{ISLR\}: An Introduction to Statistical Learning with Applications in R
 - \{DMwR\}: Data Mining with R
+- \{HSAUR\}: A Handbook of Statistical Analyses Using R
 
 ### CRAN Task Views
 
