@@ -23,8 +23,9 @@ R-squared Statistic
 
 ![R^2=\frac{\textrm{TSS}-\textrm{RSS}}{\textrm{TSS}}=1-\frac{\textrm{RSS}}{\textrm{TSS}}](http://latex.codecogs.com/gif.latex?R%5E2%3D%5Cfrac%7B%5Ctextrm%7BTSS%7D-%5Ctextrm%7BRSS%7D%7D%7B%5Ctextrm%7BTSS%7D%7D%3D1-%5Cfrac%7B%5Ctextrm%7BRSS%7D%7D%7B%5Ctextrm%7BTSS%7D%7D)
 
-- TSS measures the total variance in the response Y,and can be thought of as the amount of variability inherent in the response before the
-regression is performed.
+![\textrm{TSS}=\sum(y_i-\bar{y})^2](http://latex.codecogs.com/gif.latex?%5Ctextrm%7BTSS%7D%3D%5Csum%28y_i-%5Cbar%7By%7D%29%5E2)
+
+- TSS measures the total variance in the response Y, and can be thought of as the amount of variability inherent in the response before the regression is performed.
 - RSS measures the amount of variability that is left unexplained after performing the regression.
 - TSS − RSS measures the amount of variability in the response that is explained.
 - R^2 measures the proportion of variability inY that can be explained using X.
