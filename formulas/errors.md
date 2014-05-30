@@ -29,7 +29,7 @@ sum of squared regression (SSR) = explained sum of sqaures (ESS)
 
 ![SSR=\sum_{i=1}^{n}(\hat{y}_i-\bar{y})^2](http://latex.codecogs.com/gif.latex?SSR%3D%5Csum_%7Bi%3D1%7D%5E%7Bn%7D%28%5Chat%7By%7D_i-%5Cbar%7By%7D%29%5E2)
 
-![\textrm{RSS}=\sum(\hat{y_i}-\bar{y})^2](http://latex.codecogs.com/gif.latex?%5Ctextrm%7BRSS%7D%3D%5Csum%28%5Chat%7By_i%7D-%5Cbar%7By%7D%29%5E2)
+![\textrm{ESS}=\sum(\hat{y_i}-\bar{y})^2](http://latex.codecogs.com/gif.latex?%5Ctextrm%7BESS%7D%3D%5Csum%28%5Chat%7By_i%7D-%5Cbar%7By%7D%29%5E2)
 
 ### SST/TSS
 
