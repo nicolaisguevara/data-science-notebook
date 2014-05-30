@@ -32,3 +32,7 @@ regression is performed.
 ### F-statistic
 
 ![F=\frac{(\textrm{TSS}-\textrm{RSS})/p}{\textrm{RSS}/(n-p-1)}](http://latex.codecogs.com/gif.latex?F%3D%5Cfrac%7B%28%5Ctextrm%7BTSS%7D-%5Ctextrm%7BRSS%7D%29/p%7D%7B%5Ctextrm%7BRSS%7D/%28n-p-1%29%7D)
+
+*Reference*
+
+An Introduction to Statistical Learning
