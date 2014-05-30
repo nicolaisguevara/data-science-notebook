@@ -43,4 +43,4 @@ sum of squared total (SST) = total sum of squares (TSS)
 
 ### R-squared
 
-![R^2=\frac{SSR}{SST}=1-\frac{SSE}{SST}](http://latex.codecogs.com/gif.latex?R%5E2%3D%5Cfrac%7BSSR%7D%7BSST%7D%3D1-%5Cfrac%7BSSE%7D%7BSST%7D)
+![\begin{align*}R^2&=\frac{SSR}{SST}=1-\frac{SSE}{SST}\\&=\frac{\textrm{TSS}-\textrm{RSS}}{\textrm{TSS}}=1-\frac{\textrm{RSS}}{\textrm{TSS}}\end{align*}](http://latex.codecogs.com/gif.latex?%5Cbegin%7Balign*%7DR%5E2%26%3D%5Cfrac%7BSSR%7D%7BSST%7D%3D1-%5Cfrac%7BSSE%7D%7BSST%7D%5C%5C%26%3D%5Cfrac%7B%5Ctextrm%7BTSS%7D-%5Ctextrm%7BRSS%7D%7D%7B%5Ctextrm%7BTSS%7D%7D%3D1-%5Cfrac%7B%5Ctextrm%7BRSS%7D%7D%7B%5Ctextrm%7BTSS%7D%7D%5Cend%7Balign*%7D)
