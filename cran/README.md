@@ -4,10 +4,19 @@ The Comprehensive R Archive Network (CRAN)
 ### Packages
 
 - [\{rpart\}](rpart/): Recursive Partitioning and Regression Trees
+  - \{rpart.plot}: Plot rpart models
+- \{tree\}: Classiﬁcation and regression trees
 - [\{randomForest\}](randomForest/): Classification and Regression with Random Forest
 - \{stats\}
   - kmeans(): K-Means Clustering
 - [\{mlbench\}](mlbench/): Machine Learning Benchmark Problems
+- \{datasets\}: The R Datasets Package
+
+### Companion Packages
+
+- \{MASS\}: Modern Applied Statistics with S
+- \{ISLR\}: An Introduction to Statistical Learning with Applications in R
+- \{DMwR\}: Data Mining with R
 
 ### CRAN Task Views
 
