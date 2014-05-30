@@ -5,7 +5,7 @@ A Concise Course in Statistical Inference
 
 ### Contents
 
-- Part I Probability
+- Part I: Probability
   - Probability
   - Random Variables
   - Expectation
