@@ -9,7 +9,7 @@ fit by least squares: minimize RSS
 
 Residual Sum of Squares
 
-![\textrm{RSS}=e_1^2+e_2^2+\cdots+e_n^2](http://latex.codecogs.com/gif.latex?%5Ctextrm%7BRSS%7D%3De_1%5E2&plus;e_2%5E2&plus;%5Ccdots&plus;e_n%5E2)
+![\textrm{RSS}=\sum(y_i-\hat{y}_i)^2=e_1^2+e_2^2+\cdots+e_n^2](http://latex.codecogs.com/gif.latex?%5Ctextrm%7BRSS%7D%3D%5Csum%28y_i-%5Chat%7By%7D_i%29%5E2%3De_1%5E2&plus;e_2%5E2&plus;%5Ccdots&plus;e_n%5E2)
 
 ### RSE
 
