@@ -37,9 +37,9 @@ sum of squared total (SST) = total sum of squares (TSS)
 
 ![SST=\sum_{i=1}^{n}(y_i-\bar{y})^2](http://latex.codecogs.com/gif.latex?SST%3D%5Csum_%7Bi%3D1%7D%5E%7Bn%7D%28y_i-%5Cbar%7By%7D%29%5E2)
 
-![\textrm{TSS}=\textrm{RSS}+\textrm{ESS}](http://latex.codecogs.com/gif.latex?%5Ctextrm%7BTSS%7D%3D%5Ctextrm%7BRSS%7D&plus;%5Ctextrm%7BESS%7D)
+![SST=SSE+SSR](http://latex.codecogs.com/gif.latex?SST%3DSSE&plus;SSR)
 
-![\textrm{SST}=\textrm{SSE}+\textrm{SSR}](http://latex.codecogs.com/gif.latex?%5Ctextrm%7BSST%7D%3D%5Ctextrm%7BSSE%7D&plus;%5Ctextrm%7BSSR%7D)
+![\textrm{TSS}=\textrm{RSS}+\textrm{ESS}](http://latex.codecogs.com/gif.latex?%5Ctextrm%7BTSS%7D%3D%5Ctextrm%7BRSS%7D&plus;%5Ctextrm%7BESS%7D)
 
 ### R-squared
 
