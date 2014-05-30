@@ -63,7 +63,7 @@ X ~ F is read "X has distribution F" to indicate that X has distribution F.
 
 if for every A and B,
 
-![\mathbb{P}(X\in{A},Y\in{B})=\mathbb{P}(X\in{A})\mathbb{Y}(Y\in{B})](http://latex.codecogs.com/gif.latex?%5Cmathbb%7BP%7D%28X%5Cin%7BA%7D%2CY%5Cin%7BB%7D%29%3D%5Cmathbb%7BP%7D%28X%5Cin%7BA%7D%29%5Cmathbb%7BY%7D%28Y%5Cin%7BB%7D%29)
+![\mathbb{P}(X\in{A},Y\in{B})=\mathbb{P}(X\in{A})\mathbb{P}(Y\in{B})](http://latex.codecogs.com/gif.latex?%5Cmathbb%7BP%7D%28X%5Cin%7BA%7D%2CY%5Cin%7BB%7D%29%3D%5Cmathbb%7BP%7D%28X%5Cin%7BA%7D%29%5Cmathbb%7BP%7D%28Y%5Cin%7BB%7D%29)
 
 ### conditional probability mass function
 
