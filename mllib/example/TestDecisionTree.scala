@@ -5,9 +5,9 @@ import org.apache.spark.mllib.linalg.Vectors
 import org.apache.spark.mllib.tree.configuration.Algo._
 import org.apache.spark.mllib.tree.impurity.{Gini, Variance}
 
-object TestIris {
+object TestDecisionTree {
   def main(args: Array[String]) {
-    val sc = new SparkContext("local", "TestIris")
+    val sc = new SparkContext("local", "TestDesicionTree")
 
     def classification() {
       // Load and parse the data file
