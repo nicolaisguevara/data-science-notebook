@@ -5,11 +5,19 @@ Evaluation
 
 mean absolute error
 
+![MAE=E(|X-d|)](http://latex.codecogs.com/gif.latex?MAE%3DE%28%7CX-d%7C%29) of the prediction d.
+
+![E(|X-m|)\leq{E(|X-d|)}](http://latex.codecogs.com/gif.latex?E%28%7CX-m%7C%29%5Cleq%7BE%28%7CX-d%7C%29%7D) for m being a median of the distribution of X.
+
 ![MAE=\frac{1}{n}\sum_{i=1}^{n}|y_i-\hat{y}_i|](http://latex.codecogs.com/gif.latex?MAE%3D%5Cfrac%7B1%7D%7Bn%7D%5Csum_%7Bi%3D1%7D%5E%7Bn%7D%7Cy_i-%5Chat%7By%7D_i%7C)
 
 ### MSE
 
 mean squared error
+
+![MSE=E[(x-d)^2]](http://latex.codecogs.com/gif.latex?MSE%3DE%5B%28x-d%29%5E2%5D) of the prediction d.
+
+![E[(X-\mu)^2]\leq{E[(x-d)^2]}](http://latex.codecogs.com/gif.latex?E%5B%28X-%5Cmu%29%5E2%5D%5Cleq%7BE%5B%28x-d%29%5E2%5D%7D)
 
 ![MSE=\frac{1}{n}\sum_{i=1}^{n}(y_i-\hat{y_i})^2](http://latex.codecogs.com/gif.latex?MSE%3D%5Cfrac%7B1%7D%7Bn%7D%5Csum_%7Bi%3D1%7D%5E%7Bn%7D%28y_i-%5Chat%7By_i%7D%29%5E2)
 
