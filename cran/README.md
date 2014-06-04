@@ -3,6 +3,9 @@ The Comprehensive R Archive Network (CRAN)
 
 ### Packages
 
+- Linear Models
+  - \{glmnet\}: Lasso and elastic-net regularized generalized linear models
+  - \{lars\}: Least Angle Regression, Lasso and Forward Stagewise
 - Classification and Regression Tree (CART):
   - [\{rpart\}](rpart/): Recursive Partitioning and Regression Trees
   - \{rpart.plot}: Plot rpart models
@@ -14,6 +17,7 @@ The Comprehensive R Archive Network (CRAN)
 - [\{randomForest\}](randomForest/): Classification and Regression with Random Forest
 - \{stats\}
   - kmeans(): K-Means Clustering
+- \{e1071\}: Misc Functions of the Department of Statistics
 - [\{mlbench\}](mlbench/): Machine Learning Benchmark Problems
 - \{datasets\}: The R Datasets Package
 
@@ -24,6 +28,7 @@ The Comprehensive R Archive Network (CRAN)
 - \{DMwR\}: Data Mining with R
 - \{HSAUR\}: A Handbook of Statistical Analyses Using R
 - \{KernSmooth\}: KernKernel Smoothing
+- \{bootstrap\}: Functions for the Book "An Introduction to the Bootstrap"
 
 ### CRAN Task Views
 
