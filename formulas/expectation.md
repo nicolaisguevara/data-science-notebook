@@ -39,6 +39,8 @@ Expectation
 
 ![\begin{align*}E\left[\sum_{i=1}^{n}(X_i-\bar{X})^2\right]&=\sum_{i=1}^{n}E[X_i^2]-nE[\bar{X}^2]\\&=\sum_{i=1}^{n}\{Var(X_i)+\mu^2\}-n\{Var(\bar{X})+\mu^2\}\\&=\sum_{i=1}^{n}\{\sigma^2+\mu^2\}-n\{\sigma^2/n+\mu^2\}\\&=n\sigma^2+n\mu^2-\sigma^2\-n\mu^2\\&=(n-1)\sigma^2\end{align*}](http://latex.codecogs.com/gif.latex?%5Cbegin%7Balign*%7DE%5Cleft%5B%5Csum_%7Bi%3D1%7D%5E%7Bn%7D%28X_i-%5Cbar%7BX%7D%29%5E2%5Cright%5D%26%3D%5Csum_%7Bi%3D1%7D%5E%7Bn%7DE%5BX_i%5E2%5D-nE%5B%5Cbar%7BX%7D%5E2%5D%5C%5C%26%3D%5Csum_%7Bi%3D1%7D%5E%7Bn%7D%5C%7BVar%28X_i%29&plus;%5Cmu%5E2%5C%7D-n%5C%7BVar%28%5Cbar%7BX%7D%29&plus;%5Cmu%5E2%5C%7D%5C%5C%26%3D%5Csum_%7Bi%3D1%7D%5E%7Bn%7D%5C%7B%5Csigma%5E2&plus;%5Cmu%5E2%5C%7D-n%5C%7B%5Csigma%5E2/n&plus;%5Cmu%5E2%5C%7D%5C%5C%26%3Dn%5Csigma%5E2&plus;n%5Cmu%5E2-%5Csigma%5E2%5C-n%5Cmu%5E2%5C%5C%26%3D%28n-1%29%5Csigma%5E2%5Cend%7Balign*%7D)
 
+![\begin{align*}&\sigma^2=\frac{\sum_{i=1}^{n}(X_i-\mu)^2}{n}\ \textrm{for populations}\\&S^2=\frac{\sum_{i=1}^{n}(X_i-\bar{X})^2}{n-1}\ \textrm{for samples}\end{align*}](http://latex.codecogs.com/gif.latex?%5Cbegin%7Balign*%7D%26%5Csigma%5E2%3D%5Cfrac%7B%5Csum_%7Bi%3D1%7D%5E%7Bn%7D%28X_i-%5Cmu%29%5E2%7D%7Bn%7D%5C%20%5Ctextrm%7Bfor%20populations%7D%5C%5C%26S%5E2%3D%5Cfrac%7B%5Csum_%7Bi%3D1%7D%5E%7Bn%7D%28X_i-%5Cbar%7BX%7D%29%5E2%7D%7Bn-1%7D%5C%20%5Ctextrm%7Bfor%20samples%7D%5Cend%7Balign*%7D)
+
 *Theorm* Let X1, X2, ..., Xn be IID and let ![\mu=\mathbb{E}(X_i)](http://latex.codecogs.com/gif.latex?%5Cmu%3D%5Cmathbb%7BE%7D%28X_i%29) and ![\sigma^2=\mathbb{V}(X_i)](http://latex.codecogs.com/gif.latex?%5Csigma%5E2%3D%5Cmathbb%7BV%7D%28X_i%29), then
 
 ![\mathbb{E}(\bar{X}_n)=\mu](http://latex.codecogs.com/gif.latex?%5Cmathbb%7BE%7D%28%5Cbar%7BX%7D_n%29%3D%5Cmu)
