@@ -17,7 +17,7 @@ Stochastic Gradient Descent
 
 If the error function comprises a sum over data points
 
-![E(\mathbf{w})=\sum_{n=1}^{N}E_n(\mathbf{w})](E(\mathbf{w})=\sum_{n=1}^{N}E_n(\mathbf{w})http://latex.codecogs.com/gif.latex?E%28%5Cmathbf%7Bw%7D%29%3D%5Csum_%7Bn%3D1%7D%5E%7BN%7DE_n%28%5Cmathbf%7Bw%7D%29)
+![E(\mathbf{w})=\sum_{n=1}^{N}E_n(\mathbf{w})](http://latex.codecogs.com/gif.latex?E%28%5Cmathbf%7Bw%7D%29%3D%5Csum_%7Bn%3D1%7D%5E%7BN%7DE_n%28%5Cmathbf%7Bw%7D%29)
 
 then after presentation of pattern n, the stochastic gradient descent algorithm updates the parameter vector w using
 
