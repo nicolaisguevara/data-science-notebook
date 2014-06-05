@@ -21,7 +21,6 @@ Source | df | SS | MS | F
 ------ | -- | -- | -- | -
 Regression | p | SSregression | SSregression/p | ![\frac{SS_{regression}/p}{SS_{total}/(n-1)}](http://latex.codecogs.com/gif.latex?%5Cfrac%7BSS_%7Bregression%7D/p%7D%7BSS_%7Btotal%7D/%28n-1%29%7D)
 Error | n-p-1 | SSerror | SSerror/(n-p-1)
------ | ----- | ------- | --------------- | -
 Total | n-1 | SStotal
 
 ![F=\frac{\textrm{explained variance}}{\textrm{unexplained variance}}=\frac{SS_{regression}/p}{SS_{error}/(n-p-1)}](http://latex.codecogs.com/gif.latex?F%3D%5Cfrac%7B%5Ctextrm%7Bexplained%20variance%7D%7D%7B%5Ctextrm%7Bunexplained%20variance%7D%7D%3D%5Cfrac%7BSS_%7Bregression%7D/p%7D%7BSS_%7Berror%7D/%28n-p-1%29%7D)
@@ -72,5 +71,4 @@ Model | df | ΔSS | MS | F
 ![\hat{y}=\hat{\alpha}](http://latex.codecogs.com/gif.latex?%5Chat%7By%7D%3D%5Chat%7B%5Calpha%7D) | 1 | SSerror-SSa | ![\frac{SS_{error}-SS_{\hat{\alpha}}}{n-(n-1)}](http://latex.codecogs.com/gif.latex?%5Cfrac%7BSS_%7Berror%7D-SS_%7B%5Chat%7B%5Calpha%7D%7D%7D%7Bn-%28n-1%29%7D) | ![\frac{SS_{error}-SS_{\hat{\alpha}}}{SS_{\hat{\alpha}}/(n-1)}](http://latex.codecogs.com/gif.latex?%5Cfrac%7BSS_%7Berror%7D-SS_%7B%5Chat%7B%5Calpha%7D%7D%7D%7BSS_%7B%5Chat%7B%5Calpha%7D%7D/%28n-1%29%7D)
 ![\hat{y}=\hat{\alpha}+\hat{\beta}X_1](http://latex.codecogs.com/gif.latex?%5Chat%7By%7D%3D%5Chat%7B%5Calpha%7D&plus;%5Chat%7B%5Cbeta%7DX_1) | 2 | ![SS_{\hat{\alpha}}-SS_{\hat{\beta}_1}](http://latex.codecogs.com/gif.latex?SS_%7B%5Chat%7B%5Calpha%7D%7D-SS_%7B%5Chat%7B%5Cbeta%7D_1%7D)
 ![\hat{y}=\hat{\alpha}+\hat{\beta}_1X_1+\hat{\beta}_2X_2](http://latex.codecogs.com/gif.latex?%5Chat%7By%7D%3D%5Chat%7B%5Calpha%7D&plus;%5Chat%7B%5Cbeta%7D_1X_1&plus;%5Chat%7B%5Cbeta%7D_2X_2) | 3 | ![SS_{\hat{\beta}_1}-SS_{\hat{\beta}_1,\hat{\beta}_2}](http://latex.codecogs.com/gif.latex?SS_%7B%5Chat%7B%5Cbeta%7D_1%7D-SS_%7B%5Chat%7B%5Cbeta%7D_1%2C%5Chat%7B%5Cbeta%7D_2%7D)
------ | ----- | ------- | --------------- | --
 Total | 3 | SSerror | SSerror/(n-3)
