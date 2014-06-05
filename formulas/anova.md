@@ -19,8 +19,8 @@ where
 
 Source | df | SS | MS | F
 ------ | -- | -- | -- | -
-Error | n-p-1 | SSerror | SSerror/(n-p-1)
-Total | n-1 | SStotal
+Error | n-p-1 | SSerror | SSerror/(n-p-1) | 
+Total | n-1 | SStotal | |
 
 ![F=\frac{\textrm{explained variance}}{\textrm{unexplained variance}}=\frac{SS_{regression}/p}{SS_{error}/(n-p-1)}](http://latex.codecogs.com/gif.latex?F%3D%5Cfrac%7B%5Ctextrm%7Bexplained%20variance%7D%7D%7B%5Ctextrm%7Bunexplained%20variance%7D%7D%3D%5Cfrac%7BSS_%7Bregression%7D/p%7D%7BSS_%7Berror%7D/%28n-p-1%29%7D)
 
