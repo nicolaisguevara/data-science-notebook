@@ -1,6 +1,8 @@
 Random Variables
 ================
 
+> Larry Wasserman. *All of Statistics*
+
 ### Random Variable
 
 ![X:\Omega\to\mathbb{R}](http://latex.codecogs.com/gif.latex?X%3A%5COmega%5Cto%5Cmathbb%7BR%7D)
