@@ -22,9 +22,12 @@ Formulas
   - R-squared
   - covariance
   - correlation
-- [Bias-Variance Trade-off](bias-variance.md)
-  - Bias
-  - Variance
+- [Learning](learning.md)
+  - [Estimators](estimators.md)
+  - [Bias-Variance Trade-off](bias-variance.md)
+    - Bias
+    - Variance
 - [Regression](regression.md)
   - Least Squares
+  - [Analysis of Variance (ANOVA)](anova.md)
 - [Optimization](optimization.md)
