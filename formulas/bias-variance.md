@@ -2,6 +2,7 @@ Bias-Variance Trade-Off
 =======================
 
 > ISLR
+
 ![Y=f(X)+\epsilon](http://latex.codecogs.com/gif.latex?Y%3Df%28X%29&plus;%5Cepsilon)
 
 - ϵ is a random error term, which is independent of X and has mean zero.
