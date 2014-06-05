@@ -19,7 +19,6 @@ where
 
 Source | df | SS | MS | F
 ------ | -- | -- | -- | -
-Regression | p | SSregression | SSregression/p | ![\frac{SS_{regression}/p}{SS_{total}/(n-1)}](http://latex.codecogs.com/gif.latex?%5Cfrac%7BSS_%7Bregression%7D/p%7D%7BSS_%7Btotal%7D/%28n-1%29%7D)
 Error | n-p-1 | SSerror | SSerror/(n-p-1)
 Total | n-1 | SStotal
 
