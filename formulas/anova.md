@@ -1,7 +1,9 @@
 ANOVA
 =====
 
-Analysis of Variance: is a method for decomposing variance in a measured outcome in to variance that can be explained, such as by a regression model or an experimental treatment assignment, and variance which cannot be explained, which is often attributable to random error.
+**Analysis of Variance** is a method for decomposing variance in a measured outcome in to variance that can be explained, such as by a regression model or an experimental treatment assignment, and variance which cannot be explained, which is often attributable to random error.
+
+Analysis of variance is often used to construct an ANOVA table, which succinctly presents the variance decomposition. This method can also be used to justify regression model selection. The goal of model selection is to find parsimony between fit and degrees of freedom. ANOVA can be used to determine how much extra variance a marginal explanatory variable explains while also weighing the loss of a degree of freedom. An F-test is used to justify the inclusion of a marginal explanatory variable.
 
 "Sum of squares" can be decompsed as:
 
@@ -15,13 +17,15 @@ where
 
 ![SS_{error}=\sum_{i=1}^Ne_i^2=\sum_{i=1}^{N}(Y_i-\hat{Y}_i)^2](http://latex.codecogs.com/gif.latex?SS_%7Berror%7D%3D%5Csum_%7Bi%3D1%7D%5ENe_i%5E2%3D%5Csum_%7Bi%3D1%7D%5E%7BN%7D%28Y_i-%5Chat%7BY%7D_i%29%5E2)
 
-### One-way ANOVA
+### Anova table
 
 Source | df | SS | MS | F
 --- | --- | --- | --- | ---
 Regression | p | SSregression | SSregression/p | ![\frac{SS_{regression}/p}{SS_{total}/(n-1)}](http://latex.codecogs.com/gif.latex?%5Cfrac%7BSS_%7Bregression%7D/p%7D%7BSS_%7Btotal%7D/%28n-1%29%7D)
 Error | n-p-1 | SSerror | SSerror/(n-p-1)
 Total | n-1 | SStotal
+
+### One-way ANOVA
 
 ![F=\frac{\textrm{explained variance}}{\textrm{unexplained variance}}=\frac{SS_{regression}/p}{SS_{error}/(n-p-1)}](http://latex.codecogs.com/gif.latex?F%3D%5Cfrac%7B%5Ctextrm%7Bexplained%20variance%7D%7D%7B%5Ctextrm%7Bunexplained%20variance%7D%7D%3D%5Cfrac%7BSS_%7Bregression%7D/p%7D%7BSS_%7Berror%7D/%28n-p-1%29%7D)
 
