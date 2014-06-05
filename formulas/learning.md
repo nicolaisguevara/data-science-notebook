@@ -15,7 +15,7 @@ Goal: find a fitting hyperplane
 
 ### Regression
 
-(Christopher Bishop)
+> Chistophor Bishop. *PRML*
 
 The goal of regression is to predict the value of one or more continuous target variables t given the value of a D-dimensional vector x of input variables.
 
