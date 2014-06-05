@@ -5,7 +5,7 @@ Optimization
 
 Stochastic Gradient Descent
 
-(Andrew Ng)
+> Andrew Ng. *Machine Learning*
 
 ![J(\theta)=\frac{1}{2}\sum_{i=1}^{m}\left(h_\theta(x^{(i)})-y^{(i)}\right)](http://latex.codecogs.com/gif.latex?J%28%5Ctheta%29%3D%5Cfrac%7B1%7D%7B2%7D%5Csum_%7Bi%3D1%7D%5E%7Bm%7D%5Cleft%28h_%5Ctheta%28x%5E%7B%28i%29%7D%29-y%5E%7B%28i%29%7D%5Cright%29)
 
@@ -13,7 +13,7 @@ Stochastic Gradient Descent
 
 ![\theta_j:=\theta_j-\alpha\frac{1}{m}\sum_{i=1}^{m}\left(h_\theta(x^{(i)})-j^{(i)}\right)x_j^{(i)}](http://latex.codecogs.com/gif.latex?%5Ctheta_j%3A%3D%5Ctheta_j-%5Calpha%5Cfrac%7B1%7D%7Bm%7D%5Csum_%7Bi%3D1%7D%5E%7Bm%7D%5Cleft%28h_%5Ctheta%28x%5E%7B%28i%29%7D%29-j%5E%7B%28i%29%7D%5Cright%29x_j%5E%7B%28i%29%7D)
 
-(Christopher Bishop)
+> Christopher Bishop. *PRML*
 
 If the error function comprises a sum over data points
 
