@@ -1,6 +1,8 @@
 ANOVA
 =====
 
+> Adrienne Hosek and Erin Hartman, UC Berkeley
+
 **Analysis of Variance** is a method for decomposing variance in a measured outcome in to variance that can be explained, such as by a regression model or an experimental treatment assignment, and variance which cannot be explained, which is often attributable to random error.
 
 Analysis of variance is often used to construct an ANOVA table, which succinctly presents the variance decomposition. This method can also be used to justify regression model selection. The goal of model selection is to find parsimony between fit and degrees of freedom. ANOVA can be used to determine how much extra variance a marginal explanatory variable explains while also weighing the loss of a degree of freedom. An F-test is used to justify the inclusion of a marginal explanatory variable.
