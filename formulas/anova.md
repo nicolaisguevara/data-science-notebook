@@ -19,13 +19,21 @@ where
 
 ### Anova table
 
-Source | df | SS | MS | F
+Source | df | SS | MSE | F
 --- | --- | --- | --- | ---
 Regression | p | SSregression | SSregression/p | ![\frac{SS_{regression}/p}{SS_{total}/(n-1)}](http://latex.codecogs.com/gif.latex?%5Cfrac%7BSS_%7Bregression%7D/p%7D%7BSS_%7Btotal%7D/%28n-1%29%7D)
 Error | n-p-1 | SSerror | SSerror/(n-p-1)
 Total | n-1 | SStotal
 
+where p is defined as the number of independent regressors and
+n is the number of observations. The degrees of freedom for the regression is the number of parameters in the regression
+equation. The degrees of freedom for error is n-p-1. The total number of degrees of freedom is defined as df_regression + df_error.
+
+The F-test is a way of using the analysis of variance to determine if all of the regressors in a regression equation are jointly zero.
+
 ### One-way ANOVA
+
+In a one-way experimental analysis, the F-test determines if the means of the treatment groups are significantly different. If we have more than one treatment and one control group, then the F-test is a test to see if any treatments are significantly different from zero. The null for an F-test is that all coefficients in our model are jointly not statistically distinguishable from 0.
 
 ![F=\frac{\textrm{explained variance}}{\textrm{unexplained variance}}=\frac{SS_{regression}/p}{SS_{error}/(n-p-1)}](http://latex.codecogs.com/gif.latex?F%3D%5Cfrac%7B%5Ctextrm%7Bexplained%20variance%7D%7D%7B%5Ctextrm%7Bunexplained%20variance%7D%7D%3D%5Cfrac%7BSS_%7Bregression%7D/p%7D%7BSS_%7Berror%7D/%28n-p-1%29%7D)
 
@@ -70,7 +78,7 @@ where p and q represent the number of parameters in the unrestricted and restric
 Under the null hypothesis that the unrestricted model does not provide significantly better fit than the restricted model, reject the null if
 the F calculated from the data is greater than the critical value of the F distribution with (p-q, n-p) degrees of freedom.
 
-Model | df | ΔSS | MS | F
+Model | df | ΔSS | MSE | F
 --- | --- | --- | --- | ---
 ![\hat{y}=\hat{\alpha}](http://latex.codecogs.com/gif.latex?%5Chat%7By%7D%3D%5Chat%7B%5Calpha%7D) | 1 | SSerror-SSa | ![\frac{SS_{error}-SS_{\hat{\alpha}}}{n-(n-1)}](http://latex.codecogs.com/gif.latex?%5Cfrac%7BSS_%7Berror%7D-SS_%7B%5Chat%7B%5Calpha%7D%7D%7D%7Bn-%28n-1%29%7D) | ![\frac{SS_{error}-SS_{\hat{\alpha}}}{SS_{\hat{\alpha}}/(n-1)}](http://latex.codecogs.com/gif.latex?%5Cfrac%7BSS_%7Berror%7D-SS_%7B%5Chat%7B%5Calpha%7D%7D%7D%7BSS_%7B%5Chat%7B%5Calpha%7D%7D/%28n-1%29%7D)
 ![\hat{y}=\hat{\alpha}+\hat{\beta}X_1](http://latex.codecogs.com/gif.latex?%5Chat%7By%7D%3D%5Chat%7B%5Calpha%7D&plus;%5Chat%7B%5Cbeta%7DX_1) | 2 | ![SS_{\hat{\alpha}}-SS_{\hat{\beta}_1}](http://latex.codecogs.com/gif.latex?SS_%7B%5Chat%7B%5Calpha%7D%7D-SS_%7B%5Chat%7B%5Cbeta%7D_1%7D)
