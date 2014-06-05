@@ -21,4 +21,4 @@ If the error function comprises a sum over data points
 
 then after presentation of pattern n, the stochastic gradient descent algorithm updates the parameter vector w using
 
-![\mathbf{w}^{(\tau+1)}=\mathbf{w}^{(\tau)}-\eta\nablaE_n(\mathbf{w}^{(\tau)})](http://latex.codecogs.com/gif.latex?%5Cmathbf%7Bw%7D%5E%7B%28%5Ctau&plus;1%29%7D%3D%5Cmathbf%7Bw%7D%5E%7B%28%5Ctau%29%7D-%5Ceta%5CnablaE_n%28%5Cmathbf%7Bw%7D%5E%7B%28%5Ctau%29%7D%29)
+![\mathbf{w}^{(\tau+1)}=\mathbf{w}^{(\tau)}-\eta\nabla{E_n(\mathbf{w}^{(\tau)})}](http://latex.codecogs.com/gif.latex?%5Cmathbf%7Bw%7D%5E%7B%28%5Ctau&plus;1%29%7D%3D%5Cmathbf%7Bw%7D%5E%7B%28%5Ctau%29%7D-%5Ceta%5Cnabla%7BE_n%28%5Cmathbf%7Bw%7D%5E%7B%28%5Ctau%29%7D%29%7D)
