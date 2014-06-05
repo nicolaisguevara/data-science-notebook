@@ -23,7 +23,7 @@ Formulas
   - covariance
   - correlation
 - [Learning](learning.md)
-  - [Estimators](estimators.md)
+  - [Estimator](estimator.md)
   - [Bias-Variance Trade-off](bias-variance.md)
     - Bias
     - Variance
