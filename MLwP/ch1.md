@@ -240,7 +240,7 @@ d=3 | 7137471.177363
 d=10 | 8805551.189738
 d=100 | 10877646.621984
 
-#### nswer ML question
+#### answer ML question
 
 The question now is, when will we hit the limit of our current infrastructure, which we estimated being 100,000 requests per hour.
 
