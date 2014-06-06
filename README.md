@@ -14,6 +14,7 @@ Data Science Notebook
 - [An Introduction to Statistical Learning with Applications in R](islr/) by Gareth James, Daniela Witten, Trevor Hastie and Robert Tibshirani
 - [The Elements of Statistical Learning](esl/)
 - [All of Statistics](all-of-statistics/) by Larry Wasserman
+- [Building Data Mining Systems with Python](DMwP/) by Willi Richert and Willi Richert
 - [Machine Learning](coursera-ml/) by Andrew Ng
 
 ### Reference
