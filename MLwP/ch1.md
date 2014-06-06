@@ -164,7 +164,7 @@ plt.show()
 #### define for a learned model
 
 ```python
-def error(f x y):
+def error(f, x, y):
 	return sp.sum((f(x)-y)**2)
 ```
 
@@ -181,24 +181,24 @@ This means that the best straight line fit is the following function | `f(x) = 2
 ```python
 # use poly1d()to create a model function from the model parameters
 f1 = sp.poly1d(fp1)
-print(error(f1 x y)) ## 317389767.34
+print(error(f1, x, y)) ## 317389767.34
 ```
 
 #### plot trained model
 
 ```python
-fx = sp.linspace(0x[-1] 1000) # generate X-values for plotting
-plt.plot(fx f1(fx) linewidth=4)
+fx = sp.linspace(0,x[-1], 1000) # generate X-values for plotting
+plt.plot(fx, f1(fx) linewidth=4)
 plt.legend(["d=%i" % f1.order] loc="upper left")
 ```
 
 #### fit a more complex model
 
 ```python
-f2p = sp.polyfit(x y 2)
+f2p = sp.polyfit(x, y, 2)
 print(f2p) ## array([ 1.05322215e-02 -5.26545650e+00 1.97476082e+03])
 f2 = sp.poly1d(f2p)
-print(error(f2 x y)) ## 179983507.878
+print(error(f2, x, y)) ## 179983507.878
 ```
 
 The fitted polynomial is | `f(x) = 0.0105322215 * x**2 - 5.26545650 * x + 1974.76082`
@@ -221,16 +221,25 @@ xa = x[:inflection] # data before the inflection point
 ya = y[:inflection]
 xb = x[inflection:] # data after
 yb = y[inflection:]
-fa = sp.poly1d(sp.polyfit(xa ya 1))
-fb = sp.poly1d(sp.polyfit(xb yb 1))
-fa_= error(fa xa ya)
-fb_= error(fb xb yb)
+fa = sp.poly1d(sp.polyfit(xa, ya, 1))
+fb = sp.poly1d(sp.polyfit(xb, yb, 1))
+fa_= error(fa, xa, ya)
+fb_= error(fb, xb, yb)
 print("inflection=%f" % (fa + fb_error)) ## inflection=156639407.701523
 ```
 
 #### training and testing
 
 Remove a certain percentage of the data and train on the remaining one. Then use the hold-out data to calculate the error.
+
+```python
+train = sorted(shuffled[split_idx:])
+fbt1 = sp.poly1d(sp.polyfit(xb[train], yb[train], 1))
+fbt2 = sp.poly1d(sp.polyfit(xb[train], yb[train], 2))
+fbt3 = sp.poly1d(sp.polyfit(xb[train], yb[train], 3))
+fbt10 = sp.poly1d(sp.polyfit(xb[train], yb[train], 10))
+fbt100 = sp.poly1d(sp.polyfit(xb[train], yb[train], 100))
+```
 
 Dimension | Error
 --- | ---
