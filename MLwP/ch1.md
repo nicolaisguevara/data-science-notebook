@@ -161,7 +161,7 @@ plt.grid()
 plt.show()
 ```
 
-#### define error for a learned model
+#### define for a learned model
 
 ```python
 def error(f x y):
@@ -203,7 +203,7 @@ print(error(f2 x y)) ## 179983507.878
 
 The fitted polynomial is | `f(x) = 0.0105322215 * x**2 - 5.26545650 * x + 1974.76082`
 
-The more complex the data gets the curves capture it and make it fit better
+The more complex the data gets the curves capture it and make it fit better. However, the models are fitted too much to the data. This is called **overfitting**.
 
 Dimension | Error
 --- | ---
@@ -211,4 +211,46 @@ d=1 |  317389767.339778
 d=2 | 179983507.878179
 d=3 | 139350144.031725
 d=10 | 121942326.363461
-d=100 | 109318004.475556
+d=100 | **109318004.475556**
+
+#### fit models with inflection
+
+```python
+inflection = 3.5*7*24 # set the inflection point in hours
+xa = x[:inflection] # data before the inflection point
+ya = y[:inflection]
+xb = x[inflection:] # data after
+yb = y[inflection:]
+fa = sp.poly1d(sp.polyfit(xa ya 1))
+fb = sp.poly1d(sp.polyfit(xb yb 1))
+fa_= error(fa xa ya)
+fb_= error(fb xb yb)
+print("inflection=%f" % (fa + fb_error)) ## inflection=156639407.701523
+```
+
+#### training and testing
+
+Remove a certain percentage of the data and train on the remaining one. Then use the hold-out data to calculate the error.
+
+Dimension | Error
+--- | ---
+d=1 | 7917335.831122
+d=2 | **6993880.348870**
+d=3 | 7137471.177363
+d=10 | 8805551.189738
+d=100 | 10877646.621984
+
+#### conclusion
+
+```python
+print(fbt2) ## 0.08844 x - 97.31 x + 2.853e+04
+print(fbt2-100000) ## 0.08844 x - 97.31 x - 7.147e+04
+from scipy.optimize import fsolve
+reached_max = fsolve(fbt2-100000, 800)/(7*24)
+print("100,000 hits/hour expected at week %f" % reached_max[0]) ## 100,000 hits/hour expected at week 9.827613
+```
+
+### Summary
+
+1. most of time is spent understanding and refining the data
+2. switch mental focus from algorithms to data
