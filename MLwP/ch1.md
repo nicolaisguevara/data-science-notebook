@@ -240,7 +240,9 @@ d=3 | 7137471.177363
 d=10 | 8805551.189738
 d=100 | 10877646.621984
 
-#### conclusion
+#### nswer ML question
+
+The question now is, when will we hit the limit of our current infrastructure, which we estimated being 100,000 requests per hour.
 
 ```python
 print(fbt2) ## 0.08844 x - 97.31 x + 2.853e+04
@@ -249,6 +251,8 @@ from scipy.optimize import fsolve
 reached_max = fsolve(fbt2-100000, 800)/(7*24)
 print("100,000 hits/hour expected at week %f" % reached_max[0]) ## 100,000 hits/hour expected at week 9.827613
 ```
+
+Our model tells us that given the current user behavior and traction of our startup, it will take another month until we have reached our threshold capacity.
 
 ### Summary
 
