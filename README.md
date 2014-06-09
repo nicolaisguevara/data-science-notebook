@@ -10,10 +10,11 @@ Data Science Notebook
 
 ### Notes
 
-- [Data Mining with R, Learning with Case Studies](dmwr/) by Luis Torgo
+- [Data Mining with R: Learning with Case Studies](dmwr/) by Luis Torgo
 - [An Introduction to Statistical Learning with Applications in R](islr/) by Gareth James, Daniela Witten, Trevor Hastie and Robert Tibshirani
 - [The Elements of Statistical Learning](esl/)
 - [All of Statistics](all-of-statistics/) by Larry Wasserman
+- [Learning Scikit-Learn: Machine Learning in Python](scikit-learn-book/) by Raúl Garreta and Guillermo Moncecchi
 - [Building Machine Learning Systems with Python](mlwp/) by Willi Richert and Willi Richert
 - [Machine Learning](coursera-ml/) by Andrew Ng
 
