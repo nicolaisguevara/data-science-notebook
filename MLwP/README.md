@@ -5,19 +5,19 @@ by Willi Richert, Luis Pedro Coelho
 
 ### Contents
 
-- Chapter 1, Getting Started with Python Machine Learning
+- [Chapter 1, Getting Started with Python Machine Learning](ch1.md)
   - NumPy, SciPy and Matplotlib
   - First (tiny) machine learning application
     - SciPy's `ployfit`
 	- Hold-out
-- Chapter 2, Learning How to Classify with Real-world Examples
+- [Chapter 2, Learning How to Classify with Real-world Examples](ch2.md)
   - Iris dataset
     - Visualization
 	- Cross-validation
 	- Multiclass classification
   - Seeds dataset
     - Nearest neighbor
-- Chapter 3, Clustering – Finding Related Posts
+- [Chapter 3, Clustering – Finding Related Posts](ch3.md)
   - bag-of-word
   - Stemming using Natural Language Toolkit (NLTK)
   - Term frequency – inverse document frequency (TF-IDF)
