@@ -18,7 +18,6 @@ Machine Learning in Python
   - Clustering Handwritten Digits
 - Chapter 4 - Advanced Features
   - Feature Engineering and Selection
-  - Feature Selection
   - Model Selection
   
 ### Reference
