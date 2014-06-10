@@ -46,3 +46,55 @@
 在学习过程中，学习系统通过学习（或训练）得到一个模型，表示为条件概率分布![\hat{P}(Y|X)](http://latex.codecogs.com/gif.latex?%5Cdpi%7B100%7D%20%5Chat%7BP%7D%28Y%7CX%29)或决策函数![Y=\hat{f}(X)](http://latex.codecogs.com/gif.latex?%5Cdpi%7B100%7D%20Y%3D%5Chat%7Bf%7D%28X%29)。条件概率分布![\hat{P}(Y|X)](http://latex.codecogs.com/gif.latex?%5Cdpi%7B100%7D%20%5Chat%7BP%7D%28Y%7CX%29)或决策函数![Y=\hat{f}(X)](http://latex.codecogs.com/gif.latex?%5Cdpi%7B100%7D%20Y%3D%5Chat%7Bf%7D%28X%29)描述输入与输出随机变量之间的映射关系。
 
 在预测过程中，预测系统对于给定的测试样本集中的输出![x_{N+1}](http://latex.codecogs.com/gif.latex?%5Cdpi%7B100%7D%20x_%7BN&plus;1%7D)，由模型![y_{N+1}=\arg\max_{y_{N+1}}\hat{P}(y_{N+1}|x_{N+1})](http://latex.codecogs.com/gif.latex?y_%7BN&plus;1%7D%3D%5Carg%5Cmax_%7By_%7BN&plus;1%7D%7D%5Chat%7BP%7D%28y_%7BN&plus;1%7D%7Cx_%7BN&plus;1%7D%29)或![y_{N+1}=\hat{f}(x_{N+1})](http://latex.codecogs.com/gif.latex?y_%7BN&plus;1%7D%3D%5Chat%7Bf%7D%28x_%7BN&plus;1%7D%29)给出相应的输出![y_{n+1}](http://latex.codecogs.com/gif.latex?y_%7Bn&plus;1%7D)。
+
+## 1.3.2 策略
+
+### 损失函数
+
+对于给定的输入X,由f(X)给出相应的输出Y，用一个损失函数(loss function)或代价函数(cost function)来度量预测错误的程度。
+
+- 0-1损失函数(0-1 loss function)
+
+![L(Y,f(X))=\begin{cases}1,\ Y\neq{f(X)}\\0,\ Y=f(X)\end{cases}](http://latex.codecogs.com/gif.latex?L%28Y%2Cf%28X%29%29%3D%5Cbegin%7Bcases%7D1%2C%5C%20Y%5Cneq%7Bf%28X%29%7D%5C%5C0%2C%5C%20Y%3Df%28X%29%5Cend%7Bcases%7D)
+
+- 平方损失函数(quadratic loss function)
+
+![L(Y,f(X))=(Y-f(X))^2](http://latex.codecogs.com/gif.latex?L%28Y%2Cf%28X%29%29%3D%28Y-f%28X%29%29%5E2)
+
+- 绝对损失函数(absolute loss function)
+
+![L(Y,f(X))=|Y-f(X)|](http://latex.codecogs.com/gif.latex?L%28Y%2Cf%28X%29%29%3D%7CY-f%28X%29%7C)
+
+- 对数损失函数(logarithmic loss function) 或对数似然损失函数(log-likelihood loss function)
+
+![L(Y,P(Y|X))=-\log{P(Y|X)}](http://latex.codecogs.com/gif.latex?L%28Y%2CP%28Y%7CX%29%29%3D-%5Clog%7BP%28Y%7CX%29%7D)
+
+损失函数值越小，模型就越好。模型的输入、输出(X,Y)是随机变量，遵循联合分布P(X,Y)。
+
+#### 损失函数的期望，或风险函数(risk function)，或期望损失(expected loss)
+
+![R_{exp}(f)=E_p[L(Y,f(X))]=\int_{x\times{y}}L(y,f(x))P(x,y)\mathrm{d}x\,\mathrm{d}y](http://latex.codecogs.com/gif.latex?R_%7Bexp%7D%28f%29%3DE_p%5BL%28Y%2Cf%28X%29%29%5D%3D%5Cint_%7Bx%5Ctimes%7By%7D%7DL%28y%2Cf%28x%29%29P%28x%2Cy%29%5Cmathrm%7Bd%7Dx%5C%2C%5Cmathrm%7Bd%7Dy)
+
+#### 模型f(X)关于训练数据集的平均损失，或经验风险(empirical risk)，或经验损失(empirical loss)
+
+![R_{emp}(f)=\frac{1}{N}\sum_{i=1}^{N}L(y_i,f(x_i))](http://latex.codecogs.com/gif.latex?R_%7Bemp%7D%28f%29%3D%5Cfrac%7B1%7D%7BN%7D%5Csum_%7Bi%3D1%7D%5E%7BN%7DL%28y_i%2Cf%28x_i%29%29)
+
+其中J(f)为模型的复杂度，是定义在假设空间F上的泛函。模型f越复杂，复杂度J(f)就越大；反之，模型f越简单，复杂度J(f)就越小。
+
+#### 结构风险(structural risk)
+
+![R_{srm}(f)=\frac{1}{N}\sum_{i=1}^{N}L(y_i,f(x_i))+\lambda J(f)](http://latex.codecogs.com/gif.latex?R_%7Bsrm%7D%28f%29%3D%5Cfrac%7B1%7D%7BN%7D%5Csum_%7Bi%3D1%7D%5E%7BN%7DL%28y_i%2Cf%28x_i%29%29&plus;%5Clambda%20J%28f%29)
+
+#### 经验风险最小化(empirical risk minimization, ERM)
+
+![\min_{f\in\mathcal{F}}\frac{1}{N}\sum_{i=1}^{N}L(y_i,f(x_i))](http://latex.codecogs.com/gif.latex?%5Cmin_%7Bf%5Cin%5Cmathcal%7BF%7D%7D%5Cfrac%7B1%7D%7BN%7D%5Csum_%7Bi%3D1%7D%5E%7BN%7DL%28y_i%2Cf%28x_i%29%29)
+
+例：当模型是条件概率分布![P(Y|X)](http://latex.codecogs.com/gif.latex?P%28Y%7CX%29)，损失函数是对数损失函数![L(Y,P(Y|X))=-\log{P(Y|X)}](http://latex.codecogs.com/gif.latex?L%28Y%2CP%28Y%7CX%29%29%3D-%5Clog%7BP%28Y%7CX%29%7D)时，经验风险最小化(ERM)就等价于极大似然估计(MLE)。
+
+但是，当样本容量很小时，经验风险最小化学习的效果就未必很好，会产生过拟合(over-fitting)现象。
+
+#### 结构风险最小化(structural risk minimization, SRM)
+
+![\min_{f\in\mathcal{F}}\frac{1}{N}\sum_{i=1}^{N}L(y_i,f(x_i))+\lambda J(f)](http://latex.codecogs.com/gif.latex?%5Cmin_%7Bf%5Cin%5Cmathcal%7BF%7D%7D%5Cfrac%7B1%7D%7BN%7D%5Csum_%7Bi%3D1%7D%5E%7BN%7DL%28y_i%2Cf%28x_i%29%29&plus;%5Clambda%20J%28f%29)
+
+例：当模型是条件概率分布![P(Y|X)](http://latex.codecogs.com/gif.latex?P%28Y%7CX%29)，损失函数是对数损失函数![L(Y,P(Y|X))=-\log{P(Y|X)}](http://latex.codecogs.com/gif.latex?L%28Y%2CP%28Y%7CX%29%29%3D-%5Clog%7BP%28Y%7CX%29%7D)，模型复杂度由模型的先验概率表示时，结构风险最小化(SRM)就等价于最大后验概率估计(MAP)。
