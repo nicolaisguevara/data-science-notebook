@@ -5,7 +5,7 @@
 
 ## 1.2.1 基本概念
 
-### 1. 输入空间、特征空间与输出空间
+#### 输入空间、特征空间与输出空间
 
 在监督学习过程中，将输入与输出看作是定义在输入（特征）空间与输出空间上的随机变量的取值。输入、输出变量用大写字母表示，习惯上输入变量写作X，输出变量写作Y。输入、输出变量所去的值用小写字母表示，输入变量的取值写作x,输出变量的取值写作y。变量可以是标量或向量，都用相同类型的字母表示。本书中向量均为列向量，输入实例x的特征向量记作
 
@@ -23,11 +23,11 @@
 
 测试数据也有相应的输入与输出对组成。输入与输出对又称为样本或样本点。
 
-### 2. 联合概率分布
+#### 联合概率分布
 
 统计学习假设数据存在一定的统计规律，X和Y具有联合概率分布的假设就是监督学习关于数据的基本假设。
 
-### 3. 假设空间
+#### 假设空间
 
 监督学习的目的在于学习一个由输入到输出的映射，这一映射由模型来表示。学习的目的就在于找到最好的这样的模型。模型属于由输入空间到输出空间的映射的集合，这个集合就是假设空间(hypothesis space)。假设空间的确定以为着学习范围的确定。
 
@@ -71,7 +71,9 @@
 
 损失函数值越小，模型就越好。模型的输入、输出(X,Y)是随机变量，遵循联合分布P(X,Y)。
 
-#### 损失函数的期望，或风险函数(risk function)，或期望损失(expected loss)
+#### 损失函数的期望
+
+或风险函数(risk function)，或期望损失(expected loss)
 
 ![R_{exp}(f)=E_p[L(Y,f(X))]=\int_{x\times{y}}L(y,f(x))P(x,y)\mathrm{d}x\,\mathrm{d}y](http://latex.codecogs.com/gif.latex?R_%7Bexp%7D%28f%29%3DE_p%5BL%28Y%2Cf%28X%29%29%5D%3D%5Cint_%7Bx%5Ctimes%7By%7D%7DL%28y%2Cf%28x%29%29P%28x%2Cy%29%5Cmathrm%7Bd%7Dx%5C%2C%5Cmathrm%7Bd%7Dy)
 
@@ -98,3 +100,33 @@
 ![\min_{f\in\mathcal{F}}\frac{1}{N}\sum_{i=1}^{N}L(y_i,f(x_i))+\lambda J(f)](http://latex.codecogs.com/gif.latex?%5Cmin_%7Bf%5Cin%5Cmathcal%7BF%7D%7D%5Cfrac%7B1%7D%7BN%7D%5Csum_%7Bi%3D1%7D%5E%7BN%7DL%28y_i%2Cf%28x_i%29%29&plus;%5Clambda%20J%28f%29)
 
 例：当模型是条件概率分布![P(Y|X)](http://latex.codecogs.com/gif.latex?P%28Y%7CX%29)，损失函数是对数损失函数![L(Y,P(Y|X))=-\log{P(Y|X)}](http://latex.codecogs.com/gif.latex?L%28Y%2CP%28Y%7CX%29%29%3D-%5Clog%7BP%28Y%7CX%29%7D)，模型复杂度由模型的先验概率表示时，结构风险最小化(SRM)就等价于最大后验概率估计(MAP)。
+
+## 1.7 生成方法与判别方法
+
+#### 生成方法(generative approach)
+
+由数据学习联合概率分布P(X,Y)，然后求出条件概率分布P(Y|X)作为预测的模型，即生成模型
+
+![P(Y|X)=\frac{P(X,Y)}{P(X)}](http://latex.codecogs.com/gif.latex?P%28Y%7CX%29%3D%5Cfrac%7BP%28X%2CY%29%7D%7BP%28X%29%7D)
+
+例：朴素贝叶斯法和隐马尔科夫模型
+
+#### 判别方法(discriminative approach)
+
+由数据直接学习决策函数f(X)或者条件概率分布P(Y|X)作为预测的模型，即判别模型
+
+例：k近邻法、感知机、决策树、逻辑回归模型、最大熵模型、支持向量机(SVM)、提升方法(Boosting)和条件随机场(CRF)
+
+## 1.8 分类问题
+
+监督学习从数据中学习一个分类模型或分类决策函数，称为分类器(classifier)。分类器对新的输入进行输出的预测(prediction)，称为分类(classification)。可能的输出称为类(class)。分类的类别为多个时，称为多分类问题。
+
+评价分类器性能的指标一般是分类准确率(accuracy)。
+
+## 1.9 标注问题
+
+## 1.10 回归问题
+
+回归(regression)用于预测输入变量（自变量 independent variable）和输出变量（因变量 dependent variable）之间的关系。
+
+回归学习最常用的损失函数是平方损失函数，在此情况下，回归问题可以由著名的最小二乘法(least squares)求解。
