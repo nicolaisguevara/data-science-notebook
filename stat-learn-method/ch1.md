@@ -79,11 +79,11 @@
 
 ![R_{emp}(f)=\frac{1}{N}\sum_{i=1}^{N}L(y_i,f(x_i))](http://latex.codecogs.com/gif.latex?R_%7Bemp%7D%28f%29%3D%5Cfrac%7B1%7D%7BN%7D%5Csum_%7Bi%3D1%7D%5E%7BN%7DL%28y_i%2Cf%28x_i%29%29)
 
-其中J(f)为模型的复杂度，是定义在假设空间F上的泛函。模型f越复杂，复杂度J(f)就越大；反之，模型f越简单，复杂度J(f)就越小。
-
 #### 结构风险(structural risk)
 
 ![R_{srm}(f)=\frac{1}{N}\sum_{i=1}^{N}L(y_i,f(x_i))+\lambda J(f)](http://latex.codecogs.com/gif.latex?R_%7Bsrm%7D%28f%29%3D%5Cfrac%7B1%7D%7BN%7D%5Csum_%7Bi%3D1%7D%5E%7BN%7DL%28y_i%2Cf%28x_i%29%29&plus;%5Clambda%20J%28f%29)
+
+其中J(f)为模型的复杂度，是定义在假设空间F上的泛函。模型f越复杂，复杂度J(f)就越大；反之，模型f越简单，复杂度J(f)就越小。
 
 #### 经验风险最小化(empirical risk minimization, ERM)
 
