@@ -29,7 +29,7 @@
 
 ![\hat{y}=\arg\max_{\hat{y}}P(Y=\hat{y}|x)](http://latex.codecogs.com/gif.latex?%5Chat%7By%7D%3D%5Carg%5Cmax_%7B%5Chat%7By%7D%7DP%28Y%3D%5Chat%7By%7D%7Cx%29)
 
-有时为了方便，将权值向量和输入向量加以扩充，仍记作w,x，即![w=(w^{(1)},w^{(2)},\cdots,w^{(n)},b)^{\mathrm{T}}]http://latex.codecogs.com/gif.latex?w%3D%28w%5E%7B%281%29%7D%2Cw%5E%7B%282%29%7D%2C%5Ccdots%2Cw%5E%7B%28n%29%7D%2Cb%29%5E%7B%5Cmathrm%7BT%7D%7D)，![x=(x^{(1)},x^{(2)},\cdots,x^{(n)},1)^{\mathrm{T}}](http://latex.codecogs.com/gif.latex?x%3D%28x%5E%7B%281%29%7D%2Cx%5E%7B%282%29%7D%2C%5Ccdots%2Cx%5E%7B%28n%29%7D%2C1%29%5E%7B%5Cmathrm%7BT%7D%7D)，这时逻辑回归模型如下
+有时为了方便，将权值向量和输入向量加以扩充，仍记作w,x，即![w=(w^{(1)},w^{(2)},\cdots,w^{(n)},b)^{\mathrm{T}}](http://latex.codecogs.com/gif.latex?w%3D%28w%5E%7B%281%29%7D%2Cw%5E%7B%282%29%7D%2C%5Ccdots%2Cw%5E%7B%28n%29%7D%2Cb%29%5E%7B%5Cmathrm%7BT%7D%7D)，![x=(x^{(1)},x^{(2)},\cdots,x^{(n)},1)^{\mathrm{T}}](http://latex.codecogs.com/gif.latex?x%3D%28x%5E%7B%281%29%7D%2Cx%5E%7B%282%29%7D%2C%5Ccdots%2Cx%5E%7B%28n%29%7D%2C1%29%5E%7B%5Cmathrm%7BT%7D%7D)，这时逻辑回归模型如下
 
 ![P(Y=1|x)=\frac{\exp(w\cdot x)}{1+\exp(w\cdot x)}](http://latex.codecogs.com/gif.latex?P%28Y%3D1%7Cx%29%3D%5Cfrac%7B%5Cexp%28w%5Ccdot%20x%29%7D%7B1&plus;%5Cexp%28w%5Ccdot%20x%29%7D)
 
