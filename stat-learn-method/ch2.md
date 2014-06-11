@@ -3,7 +3,17 @@
 
 感知机(Perceptron)是二类分类的线性分类模型，对应于输入空间（特征空间）中将实例划分为正负两类的分离超平面(separating hyperplane)，属于判别模型。感知机预测是用学习得到的感知机模型对新的输入实例进行分类。
 
-由输入空间到输出空间的函数![f(x)=\mathrm{sign}(w\cdot x+b)](http://latex.codecogs.com/gif.latex?f%28x%29%3D%5Cmathrm%7Bsign%7D%28w%5Ccdot%20x&plus;b%29)称为感知机，其中w和b为感知机模型函数，线性方程wx+b=0对应于特征空间中的一个超平面S，其中w是超平面的法向量，b是超平面的截距。
+由输入空间到输出空间的函数![f(x)=\mathrm{sign}(w\cdot x+b)](http://latex.codecogs.com/gif.latex?f%28x%29%3D%5Cmathrm%7Bsign%7D%28w%5Ccdot%20x&plus;b%29)称为感知机，其中
+
+- w和b为感知机模型参数
+  - ![w\in\mathbf{R}^n](http://latex.codecogs.com/gif.latex?w%5Cin%5Cmathbf%7BR%7D%5En)叫做权值(weight)或权值向量(weight vector)
+  - ![b\in\mathbf{R}](http://latex.codecogs.com/gif.latex?b%5Cin%5Cmathbf%7BR%7D)叫做偏置(bias)
+  - ![w\cdot x](http://latex.codecogs.com/gif.latex?w%5Ccdot%20x)表示w和x的内积
+- sign是符号函数
+
+![\mathrm{sign}(x)=\begin{cases}+1,\quad x\geq 0\\-1,\quad x<0 \end{cases}](http://latex.codecogs.com/gif.latex?%5Cmathrm%7Bsign%7D%28x%29%3D%5Cbegin%7Bcases%7D&plus;1%2C%5Cquad%20x%5Cgeq%200%5C%5C-1%2C%5Cquad%20x%3C0%20%5Cend%7Bcases%7D)
+
+线性方程wx+b=0对应于特征空间中的一个超平面S，其中w是超平面的法向量，b是超平面的截距。
 
 感知机sign(wx+b)学习的损失函数为
 
