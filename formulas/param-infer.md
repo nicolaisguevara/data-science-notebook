@@ -31,7 +31,7 @@ The likelihood function is defined by
 
 The log-likelihood function is defined by ![\ell_n(\theta)=\log\mathcal{L}_n(\theta)](http://latex.codecogs.com/gif.latex?%5Cell_n%28%5Ctheta%29%3D%5Clog%5Cmathcal%7BL%7D_n%28%5Ctheta%29)
 
-The likelihood function is just the joint density of the data, except that we treat it is a function of the parameter θ. Thus ![\mathcal{L}_n:\Theta\rightarrow[0,\infty)](http://latex.codecogs.com/gif.latex?%5Cmathcal%7BL%7D_n%3A%5CTheta%5Crightarrow%5B0%2C%5Cinfty%29)
+The likelihood function is just the joint density of the data, except that we treat it is a function of the parameter θ. Thus ![\mathcal{L}_n:\Theta\rightarrow\[0,\infty\)](http://latex.codecogs.com/gif.latex?%5Cmathcal%7BL%7D_n%3A%5CTheta%5Crightarrow%5C%5B0%2C%5Cinfty%5C%29)
 
 The **maximum likelihood estimator** MLE, denoted by ![\hat{\theta}_n](http://latex.codecogs.com/gif.latex?%5Chat%7B%5Ctheta%7D_n), is the value of θ that maximizes ![\mathcal{L}_n(\theta)](http://latex.codecogs.com/gif.latex?%5Cmathcal%7BL%7D_n%28%5Ctheta%29)
 
