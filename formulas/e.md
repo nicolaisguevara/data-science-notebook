@@ -1,9 +1,5 @@
-Distribution
-============
-
-### e
-
-Euler's number
+Euler's Number
+==============
 
 > 阮一峰, 数学常数e的含义
 
