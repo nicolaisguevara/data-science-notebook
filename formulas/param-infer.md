@@ -37,3 +37,28 @@ The **maximum likelihood estimator** MLE, denoted by ![\hat{\theta}_n](http://la
 
 The maximum of ![\ell_n(\theta)](http://latex.codecogs.com/gif.latex?%5Cell_n%28%5Ctheta%29) occurs at the same place as the maximum of ![\mathcal{L}_n(\theta)](http://latex.codecogs.com/gif.latex?%5Cmathcal%7BL%7D_n%28%5Ctheta%29), so maximizing the log-likelihood leads to the same answer as maximizing the likelihood. Often, it is easier to work with the log-likelihood.
 
+### `GridSearchCV`
+
+Grid Search is used to optimize the parameters of a model using an internal Cross-Validation: evaluating estimator performance scheme.
+
+```python
+tuned_parameters = [{'kernel': ['rbf'], 'gamma': [1e-3, 1e-4],
+                     'C': [1, 10, 100, 1000]},
+                    {'kernel': ['linear'], 'C': [1, 10, 100, 1000]}]
+scores = ['precision', 'recall']
+clf = GridSearchCV(SVC(C=1), tuned_parameters, cv=5, scoring=score)
+    clf.fit(X_train, y_train)
+					
+```
+
+It is recommended to split the data into a development set (to be fed to the GridSearchCV instance) and an evaluation set to compute performance metrics. This can be done by using the `cross_validation.train_test_split` utility function.
+
+### Model specific cross-validation
+
+The most common parameter amenable to this strategy is the parameter encoding the strength of the regularizer. In this case we say that we compute the regularization path of the estimator.
+
+### Information Criterion
+
+`linear_model.LassoLarsIC([criterion, ...])` benefitting from the Aikike Information Criterion (AIC) or the Bayesian Information Criterion (BIC) for automated model selection.
+
+### Out of Bag Estimates
