@@ -10,6 +10,8 @@ The goal of ensemble methods is to combine the predictions of several models bui
 2. In boosting methods, models are built *sequentially* and one tries to reduce the **bias** of the combined model. The motivation is to combine several weak models to produce a powerful ensemble.
   - Examples: AdaBoost, Gradient Tree Boosting, ...
   
+### Forests of randomized trees
+  
 The `sklearn.ensemble` module includes two averaging algorithms based on randomized decision trees: the `RandomForest` algorithm and the `Extra-Trees` method.
 
 #### Random Forests
@@ -40,3 +42,19 @@ Bear in mind though that these values are usually not optimal. The best paramete
 
 - bootstrap samples are used by default in random forests (`bootstrap=True`)
 - while the default strategy is to use the original dataset for building extra-trees (`bootstrap=False`).
+
+### AdaBoost
+
+The core principle of AdaBoost is to fit a sequence of weak learners (i.e., models that are only slightly better than random guessing, such as small decision trees) on repeatedly modified versions of the data. The predictions from all of them are then combined through a *weighted majority vote (or sum)* to produce the final prediction.
+
+AdaBoost can be used both for classification and regression problems:
+
+- For multi-class classification, AdaBoostClassifier implements `AdaBoost-SAMME` and `AdaBoost-SAMME.R`.
+- For regression, AdaBoostRegressor implements `AdaBoost.R2`.
+
+#### Gradient Tree Boosting
+
+Gradient Tree Boosting or Gradient Boosted Regression Trees (GBRT) is a generalization of boosting to arbitrary differentiable loss functions. GBRT is an accurate and effective off-the-shelf procedure that can be used for both regression and classification problems.
+
+- classification: `GradientBoostingClassifier` supports both binary and multi-class classification via the deviance loss function
+- regression: `GradientBoostingRegressor` supports a number of different loss functions for regression which can be specified via the argument loss; the default loss function for regression is **least squares** (`ls`).
