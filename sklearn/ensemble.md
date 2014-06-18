@@ -5,9 +5,9 @@ Emsemble methods
 
 The goal of ensemble methods is to combine the predictions of several models built with a given learning algorithm in order to improve generalizability / robustness over a single model.
 
-1. In averaging methods, the driving principle is to build several models independently and then to average their predictions. On average, the combined model is usually better than any of the single model because its **variance** is reduced.
+1. In averaging methods, the driving principle is to build several models *independently* and then to *average* their predictions. On average, the combined model is usually better than any of the single model because its **variance** is reduced.
   - Examples: Bagging methods, Forests of randomized trees...
-2. In boosting methods, models are built sequentially and one tries to reduce the **bias** of the combined model. The motivation is to combine several weak models to produce a powerful ensemble.
+2. In boosting methods, models are built *sequentially* and one tries to reduce the **bias** of the combined model. The motivation is to combine several weak models to produce a powerful ensemble.
   - Examples: AdaBoost, Gradient Tree Boosting, ...
   
 The `sklearn.ensemble` module includes two averaging algorithms based on randomized decision trees: the `RandomForest` algorithm and the `Extra-Trees` method.
