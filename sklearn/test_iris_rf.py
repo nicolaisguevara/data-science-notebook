@@ -37,6 +37,12 @@ y_train_pred = clf.predict(X_train)
 
 print "the precision of train data is ", metrics.accuracy_score(y_train, y_train_pred)
 
+from sklearn import metrics
+
+print(metrics.classification_report(y_train, y_train_pred))
+
 y_test_pred= clf.predict(X_test)
 
 print "the precision of test data is ", metrics.accuracy_score(y_test, y_test_pred)
+
+print(metrics.classification_report(y_test, y_test_pred))
