@@ -33,16 +33,20 @@ print clf.feature_importances_
 
 from sklearn import metrics
 
+# estimate for train data
 y_train_pred = clf.predict(X_train)
 
 print "the precision of train data is ", metrics.accuracy_score(y_train, y_train_pred)
 
-from sklearn import metrics
+print metrics.confusion_matrix(y_train, y_train_pred)
 
-print(metrics.classification_report(y_train, y_train_pred))
+print metrics.classification_report(y_train, y_train_pred, target_names=iris.target_names)
 
+# estimate for test data
 y_test_pred= clf.predict(X_test)
 
 print "the precision of test data is ", metrics.accuracy_score(y_test, y_test_pred)
 
-print(metrics.classification_report(y_test, y_test_pred))
+print metrics.confusion_matrix(y_test, y_test_pred)
+
+print metrics.classification_report(y_test, y_test_pred, target_names=iris.target_names)
