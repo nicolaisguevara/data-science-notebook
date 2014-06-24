@@ -18,9 +18,7 @@
 
 ![\int_a^bf(x)\frac{g(x)}{g(x)}\,dx=\int_a^b\frac{f(x)}{g(x)}g(x)\, dx](http://latex.codecogs.com/gif.latex?%5Cbg_white%20%5Cint_a%5Ebf%28x%29%5Cfrac%7Bg%28x%29%7D%7Bg%28x%29%7D%5C%2Cdx%3D%5Cint_a%5Eb%5Cfrac%7Bf%28x%29%7D%7Bg%28x%29%7Dg%28x%29%5C%2C%20dx)
 
-那么把 ![\frac{f(x)}{g(x)}](http://latex.codecogs.com/gif.latex?%5Cbg_white%20%5Cfrac%7Bf%28x%29%7D%7Bg%28x%29%7D) 作为一个函数，而把g(x)看做是[a,b]上的一个概率分布，抽取n个样本之后，上述式子可以继续写为：
-
-![\frac{1}{n}\sum_{i=1}^{n}\frac{f(x_i)}{g(x_i)}](http://latex.codecogs.com/gif.latex?%5Cbg_white%20%5Cfrac%7B1%7D%7Bn%7D%5Csum_%7Bi%3D1%7D%5E%7Bn%7D%5Cfrac%7Bf%28x_i%29%7D%7Bg%28x_i%29%7D)，当n趋向无穷大的时候，根据大数定理，上述式子是和要求的定积分式子是相等的，因此可以用抽样的方法来得到近似解。
+那么把f(x)/g(x)作为一个函数，而把g(x)看做是[a,b]上的一个概率分布，抽取n个样本之后，上述式子可以继续写为：![\frac{1}{n}\sum_{i=1}^{n}\frac{f(x_i)}{g(x_i)}](http://latex.codecogs.com/gif.latex?%5Cbg_white%20%5Cfrac%7B1%7D%7Bn%7D%5Csum_%7Bi%3D1%7D%5E%7Bn%7D%5Cfrac%7Bf%28x_i%29%7D%7Bg%28x_i%29%7D)，当n趋向无穷大的时候，根据大数定理，上述式子是和要求的定积分式子是相等的，因此可以用抽样的方法来得到近似解。
 
 通过上述两个例子，我们大概能够理解抽样方法解决问题的基本思想，其基本思路就是要把待解决的问题转化为一种可以通过某种采样方法可以解决的问题，至于怎么转化，还是挺有创造性，没有定法。因此随机模拟方法的核心就是如何对一个概率分布得到样本，即抽样（sampling）。因此下一节，我们将介绍常用的抽样方法。
 
