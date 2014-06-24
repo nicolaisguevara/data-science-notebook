@@ -38,7 +38,7 @@
 
 2. 对于均匀分布采样 ui ~ U(a,b);
 
-3. 如果![ui\leq \frac{f(x)}{Mg(x)}](http://latex.codecogs.com/gif.latex?%5Cbg_white%20ui%5Cleq%20%5Cfrac%7Bf%28x%29%7D%7BMg%28x%29%7D), 那么认为xi是有效的样本；否则舍弃该样本；（# 这个步骤充分体现了这个方法的名字：接受-拒绝）
+3. 如果![u_i\leq \frac{f(x)}{Mg(x)}](http://latex.codecogs.com/gif.latex?%5Cbg_white%20u_i%5Cleq%20%5Cfrac%7Bf%28x%29%7D%7BMg%28x%29%7D), 那么认为xi是有效的样本；否则舍弃该样本；（# 这个步骤充分体现了这个方法的名字：接受-拒绝）
 
 4. 反复重复步骤1~3，直到所需样本达到要求为止。
 
@@ -52,12 +52,12 @@
 
 重要性采样和蒙特卡洛积分密切相关，看积分：
 
-![\int f(x)\,dx=\int\frac{f(x)}{g(x)}g(x)\,dx](http://latex.codecogs.com/gif.latex?%5Cbg_white%20%5Cint%20f%28x%29%5C%2Cdx%3D%5Cint%5Cfrac%7Bf%28x%29%7D%7Bg%28x%29%7Dg%28x%29%5C%2Cdx), 如果g(x)是一个概率分布，从g(x)中抽取N个样本，上述的式子就约等于(1/N)* \sum f(xi)*(1/g(xi))。这相当于给每个样本赋予了一个权重，g(xi)大意味着概率大，那么N里面含有这样的样本xi就多，即这些样本的权重大，所以称为重要性抽样。
+![\int f(x)\,dx=\int\frac{f(x)}{g(x)}g(x)\,dx](http://latex.codecogs.com/gif.latex?%5Cbg_white%20%5Cint%20f%28x%29%5C%2Cdx%3D%5Cint%5Cfrac%7Bf%28x%29%7D%7Bg%28x%29%7Dg%28x%29%5C%2Cdx), 如果g(x)是一个概率分布，从g(x)中抽取N个样本，上述的式子就约等于 ![\frac{1}{n}\sum_{i=1}^{n}\frac{f(x_i)}{g(x_i)}](http://latex.codecogs.com/gif.latex?%5Cbg_white%20%5Cfrac%7B1%7D%7Bn%7D%5Csum_%7Bi%3D1%7D%5E%7Bn%7D%5Cfrac%7Bf%28x_i%29%7D%7Bg%28x_i%29%7D)。这相当于给每个样本赋予了一个权重，g(xi)大意味着概率大，那么N里面含有这样的样本xi就多，即这些样本的权重大，所以称为重要性抽样。
 
 抽样的步骤如下：
 
 1. 选择一个容易抽样的分布g(x), 从g(x)中抽取N个样本；
-2. 计算![\frac{1}{n}\sum_{i=1}^{n}\frac{f(x_i)}{g(x_i)}](http://latex.codecogs.com/gif.latex?%5Cbg_white%20%5Cfrac%7B1%7D%7Bn%7D%5Csum_%7Bi%3D1%7D%5E%7Bn%7D%5Cfrac%7Bf%28x_i%29%7D%7Bg%28x_i%29%7D)，从而得到近似解。
+2. 计算 ![\frac{1}{n}\sum_{i=1}^{n}\frac{f(x_i)}{g(x_i)}](http://latex.codecogs.com/gif.latex?%5Cbg_white%20%5Cfrac%7B1%7D%7Bn%7D%5Csum_%7Bi%3D1%7D%5E%7Bn%7D%5Cfrac%7Bf%28x_i%29%7D%7Bg%28x_i%29%7D)，从而得到近似解。
 
 2.3  MCMC抽样方法
 
@@ -68,7 +68,7 @@ A).  Metropolis-Hasting算法
 
 这个算法是两个作者的合称，但不是同一篇论文的，一个是1953年，另外一个是197x年对1953年的工作进行了一些扩展，所以以这两位作者的名字来命名这个算法。
 
-假设要采样的概率分布是\pi(x)，现在假设有一个概率分布p(y|x)，使得 ![\pi(x)p(y|x) = \pi(y)p(x|y)](http://latex.codecogs.com/gif.latex?%5Cbg_white%20%5Cpi%28x%29p%28y%7Cx%29%20%3D%20%5Cpi%28y%29p%28x%7Cy%29) 成立，称细致平衡公式，这个细致平衡公式是markov chain能达到稳定分布的必要条件。因此关键是构建出一个概率分布p(y|x)使得它满足细致平衡。现在假设我们有一个容易采样的分布q(y|x)（称为建议分布)，对于目前的样本x，它能够通过q(y|x)得到下一个建议样本y，这个建议样本y按照一定的概率被接受或者不被接受，称为比率\alpha(x, y) = min{1, q(x|y)*\pi(y)/[q(y|x)*\pi(x)]}。即如果知道样本xi，如何知道下一个样本x_{i+1}是什么呢？就是通过q(y|xi)得到一个建议样本y，然后根据\alpha(xi, y)决定x_{i+1}=y 还是x_{i+1}=xi。可以证明分布q(y|x)*\alpha(x,y)满足细致平衡，同时可以证明这样抽取得到的样本是分布\pi(x)的样本。具体的步骤如下：
+假设要采样的概率分布是 ![\pi(x)](http://latex.codecogs.com/gif.latex?%5Cbg_white%20%5Cpi%28x%29)，现在假设有一个概率分布p(y|x)，使得 ![\pi(x)p(y|x) = \pi(y)p(x|y)](http://latex.codecogs.com/gif.latex?%5Cbg_white%20%5Cpi%28x%29p%28y%7Cx%29%20%3D%20%5Cpi%28y%29p%28x%7Cy%29) 成立，称细致平衡公式，这个细致平衡公式是markov chain能达到稳定分布的必要条件。因此关键是构建出一个概率分布p(y|x)使得它满足细致平衡。现在假设我们有一个容易采样的分布q(y|x)（称为建议分布)，对于目前的样本x，它能够通过q(y|x)得到下一个建议样本y，这个建议样本y按照一定的概率被接受或者不被接受，称为比率 ![\alpha(x, y)=\min\left\{1, \frac{q(x|y)\pi(y)}{q(y|x)\pi(x)}\right\}](http://latex.codecogs.com/gif.latex?%5Cbg_white%20%5Calpha%28x%2C%20y%29%3D%5Cmin%5Cleft%5C%7B1%2C%20%5Cfrac%7Bq%28x%7Cy%29%5Cpi%28y%29%7D%7Bq%28y%7Cx%29%5Cpi%28x%29%7D%5Cright%5C%7D)。即如果知道样本xi，如何知道下一个样本 ![x_{i+1}](http://latex.codecogs.com/gif.latex?%5Cbg_white%20x_%7Bi&plus;1%7D) 是什么呢？就是通过q(y|xi)得到一个建议样本y，然后根据 ![\alpha(x_i, y)](http://latex.codecogs.com/gif.latex?%5Cbg_white%20%5Calpha%28x_i%2C%20y%29) 决定 ![x_{i+1}=y](http://latex.codecogs.com/gif.latex?%5Cbg_white%20x_%7Bi&plus;1%7D%3Dy) 还是 ![x_{i+1}=x_i](http://latex.codecogs.com/gif.latex?%5Cbg_white%20x_%7Bi&plus;1%7D%3Dx_i)。可以证明分布 ![q(y|x)\alpha(x,y)](http://latex.codecogs.com/gif.latex?%5Cbg_white%20q%28y%7Cx%29%5Calpha%28x%2Cy%29)满足细致平衡，同时可以证明这样抽取得到的样本是分布 ![\pi(x)](http://latex.codecogs.com/gif.latex?%5Cbg_white%20%5Cpi%28x%29) 的样本。具体的步骤如下：
 
 1. 给定一个起始样本x_0和一个建议分布q(y|x)；
 2. 对于第i个样本xi，通过q(y|xi)得到一个建议样本y；计算比率![\alpha(x_i, y)= \min\left\{1, \frac{q(x_i|y)\pi(y)}{q(y|x_i)\pi(x_i)}\right\}](http://latex.codecogs.com/gif.latex?%5Cbg_white%20%5Calpha%28x_i%2C%20y%29%3D%20%5Cmin%5Cleft%5C%7B1%2C%20%5Cfrac%7Bq%28x_i%7Cy%29%5Cpi%28y%29%7D%7Bq%28y%7Cx_i%29%5Cpi%28x_i%29%7D%5Cright%5C%7D);
@@ -79,15 +79,15 @@ A).  Metropolis-Hasting算法
 
 B).  Gibbs采样算法
 
-Gibbs算法，很简单，就是用条件分布的抽样来替代全概率分布的抽样。例如，X={x1,x2,...xn}满足分布p(X)，如何对p(X)进行抽样呢？如果我们知道它的条件分布p(x1|X_{-1}),...,p(xi|X_{-i}),....，其中X_{-i}表示除了xi之外X的所有变量。如果这些条件分布都是很容易抽样的，那么我们就可以通过对条件分布的抽样来对全概率分布p(X)进行抽样。
+Gibbs算法，很简单，就是用条件分布的抽样来替代全概率分布的抽样。例如，![X=\{x_1,x_2,\cdots,x_n\}](http://latex.codecogs.com/gif.latex?%5Cbg_white%20X%3D%5C%7Bx_1%2Cx_2%2C%5Ccdots%2Cx_n%5C%7D) 满足分布p(X)，如何对p(X)进行抽样呢？如果我们知道它的条件分布 ![p(x_1|X_{-1}),\cdots,p(x_i|X_{-i}),\cdots](http://latex.codecogs.com/gif.latex?%5Cbg_white%20p%28x_1%7CX_%7B-1%7D%29%2C%5Ccdots%2Cp%28x_i%7CX_%7B-i%7D%29%2C%5Ccdots)，其中 ![X_{-i}](http://latex.codecogs.com/gif.latex?%5Cbg_white%20X_%7B-i%7D) 表示除了xi之外X的所有变量。如果这些条件分布都是很容易抽样的，那么我们就可以通过对条件分布的抽样来对全概率分布p(X)进行抽样。
 
 Gibbs采样算法的步骤：
 
-1. 给定一个初始样本X0={x10,x20,...,xn0}
-2.已知一个样本Xi={x1i,x2i,...,xni}，对于x1_{i+1}进行抽样，x1_{i+1} ~ p(x1|Xi_{-1})
-3. 对于x2_{i+1}进行抽样，x2_{i+1} ~ p(x2|x1_{i+1}, x3i,...xni)
-4.对于xn_{i+1}进行抽样，xn_{i+1} ~ p(xn|x1_{i+1}, x2_{i+1},...x_{n-1}_{i+1})
-5.步骤2~4可以得到X的一个样本，然后重复步骤2~4可以不断地得到X的样本。
+1. 给定一个初始样本 ![X_0=\{x_0^1,x_0^2,...,x_0^n\}](http://latex.codecogs.com/gif.latex?%5Cbg_white%20X_0%3D%5C%7Bx_0%5E1%2Cx_0%5E2%2C...%2Cx_0%5En%5C%7D)
+2.已知一个样本 ![X_i=\{x_i^1,x_i^2,...,x_i^n\}](http://latex.codecogs.com/gif.latex?%5Cbg_white%20X_i%3D%5C%7Bx_i%5E1%2Cx_i%5E2%2C...%2Cx_i%5En%5C%7D)，对于 ![x_{i+1}^1](http://latex.codecogs.com/gif.latex?%5Cbg_white%20x_%7Bi&plus;1%7D%5E1)进行抽样，![x_{i+1}^1 ~ p(x^1|X_{-1}^i)](http://latex.codecogs.com/gif.latex?%5Cbg_white%20x_%7Bi&plus;1%7D%5E1%20%7E%20p%28x%5E1%7CX_%7B-1%7D%5Ei%29)
+3. 对于 ![x_{i+1}^2](http://latex.codecogs.com/gif.latex?%5Cbg_white%20x_%7Bi&plus;1%7D%5E2)进行抽样，![x_{i+1}^2 \sim p(x^2|x_{i+1}^1, x_i^3,...x_i^n)](http://latex.codecogs.com/gif.latex?%5Cbg_white%20x_%7Bi&plus;1%7D%5E2%20%5Csim%20p%28x%5E2%7Cx_%7Bi&plus;1%7D%5E1%2C%20x_i%5E3%2C...x_i%5En%29)
+4. 对于 ![x_{i+1}^n](http://latex.codecogs.com/gif.latex?%5Cbg_white%20x_%7Bi&plus;1%7D%5En)进行抽样，![x_{i+1}^n \sim p(x^n|x_{i+1}^1, x_{i+1}^2,\cdots,x_{i+1}^{n-1})](http://latex.codecogs.com/gif.latex?%5Cbg_white%20x_%7Bi&plus;1%7D%5En%20%5Csim%20p%28x%5En%7Cx_%7Bi&plus;1%7D%5E1%2C%20x_%7Bi&plus;1%7D%5E2%2C%5Ccdots%2Cx_%7Bi&plus;1%7D%5E%7Bn-1%7D%29)
+5. 步骤2~4可以得到X的一个样本，然后重复步骤2~4可以不断地得到X的样本。
 
 当然无论是metropolis-hasting算法还是gibbs算法，都有一个burn in的过程，所谓burn in的过程就是因为这个两个算法本身都是markov chain的算法，要达到稳定状态需要一定的步骤才能达到，所以需要一个burn in过程，只有在达到平衡状态时候得到的样本才能是平衡状态时候的目标分布的样本，因此，在burn in过程中产生的样本都需要被舍弃。如何判断一个过程是否达到了平衡状态还没有一个成熟的方法来解决，目前常见的方法是看是否状态已经平稳（例如画一个图，如果在较长的过程中，变化已经不大，说明很有可能已经平衡）当然这个方法并不能肯定一个状态是否平衡，你可以举出反例，但是却是实际中没有办法的办法。
 
