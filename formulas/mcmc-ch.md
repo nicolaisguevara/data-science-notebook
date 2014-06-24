@@ -8,7 +8,7 @@
 
 本文将分为两个大类来分别叙述，首先我们先谈谈随机模拟的基本思想和基本思路，然后我们考察随机模拟的核心：对一个分布进行抽样。我们将介绍常用的抽样方法，1. 接受-拒绝抽样；2）重要性抽样；3）MCMC（马尔科夫链蒙特卡洛方法）方法，主要介绍MCMC的两个非常著名的采样算法（metropolis-hasting算法和它的特例Gibbs采样算法）。
 
-一. 随机模拟的基本思想
+### 一. 随机模拟的基本思想
 
 我们先看一个例子：现在假设我们有一个矩形的区域R（大小已知），在这个区域中有一个不规则的区域M（即不能通过公式直接计算出来），现在要求取M的面积？ 怎么求？近似的方法很多，例如：把这个不规则的区域M划分为很多很多个小的规则区域，用这些规则区域的面积求和来近似M，另外一个近似的方法就是采样的方法，我们抓一把黄豆，把它们均匀地铺在矩形区域，如果我们知道黄豆的总个数S，那么只要我们数数位于不规则区域M中的黄豆个数S1，那么我们就可以求出M的面积：![M=\frac{S_1}{S}R](http://latex.codecogs.com/gif.latex?%5Cbg_white%20M%3D%5Cfrac%7BS_1%7D%7BS%7DR)。
 
@@ -22,13 +22,13 @@
 
 通过上述两个例子，我们大概能够理解抽样方法解决问题的基本思想，其基本思路就是要把待解决的问题转化为一种可以通过某种采样方法可以解决的问题，至于怎么转化，还是挺有创造性，没有定法。因此随机模拟方法的核心就是如何对一个概率分布得到样本，即抽样（sampling）。因此下一节，我们将介绍常用的抽样方法。
 
-二. 常见的抽样方法
+### 二. 常见的抽样方法
 
 2.0 直接抽样法
 
 略，因为较为简单，而且只能解决很简单的问题，一般是一维分布的问题。
 
-2.1 接受-拒绝抽样（Acceptance-Rejection sampling)
+### 2.1 接受-拒绝抽样（Acceptance-Rejection sampling)
 
 又简称拒绝抽样，直观地理解，为了得到一个分布的样本，我们通过某种机制得到了很多的初步样本，然后其中一部分初步样本会被作为有效的样本（即要抽取的分布的样本），一部分初步样本会被认为是无效样本舍弃掉。这个算法的基本思想是：我们需要对一个分布f(x)进行采样，但是却很难直接进行采样，所以我们想通过另外一个容易采样的分布g(x)的样本，用某种机制去除掉一些样本，从而使得剩下的样本就是来自与所求分布f(x)的样本。
 
@@ -48,7 +48,7 @@
 
 (说明：这是从其他地方弄来的图，不是自己画的，符号有些和文中不一致，其中![\pi(x)](http://latex.codecogs.com/gif.latex?%5Cbg_white%20%5Cpi%28x%29) 就是文中的f(x)，q(x)就是文中的g(x) )
 
-2.2 重要性抽样(Importance sampling)
+### 2.2 重要性抽样(Importance sampling)
 
 重要性采样和蒙特卡洛积分密切相关，看积分：
 
@@ -59,12 +59,12 @@
 1. 选择一个容易抽样的分布g(x), 从g(x)中抽取N个样本；
 2. 计算 ![\frac{1}{n}\sum_{i=1}^{n}\frac{f(x_i)}{g(x_i)}](http://latex.codecogs.com/gif.latex?%5Cbg_white%20%5Cfrac%7B1%7D%7Bn%7D%5Csum_%7Bi%3D1%7D%5E%7Bn%7D%5Cfrac%7Bf%28x_i%29%7D%7Bg%28x_i%29%7D)，从而得到近似解。
 
-2.3  MCMC抽样方法
+### 2.3 MCMC抽样方法
 
 无论是拒绝抽样还是重要性采样，都是属于独立采样，即样本与样本之间是独立无关的，这样的采样效率比较低，如拒绝采样，所抽取的样本中有很大部分是无效的，这样效率就比较低，MCMC方法是关联采样，即下一个样本与这个样本有关系，从而使得采样效率高。MCMC方法的基本思想是：通过构建一个markov chain使得该markov chain的稳定分布是我们所要采样的分布f(x)。如果这个markov chain达到稳定状态，那么来自这个chain的每个样本都是f(x)的样本，从而实现抽样的目的。这里存在一个核心问题，如何构建满足要求的markov chain？（什么是markov chain，什么是稳定分布，请查资料，这里假设读者已知。）
 在本文，我们介绍两个著名MCMC抽样方法，它们能够方便地构建满足要求的markov chain。
 
-A).  Metropolis-Hasting算法
+### A) Metropolis-Hasting算法
 
 这个算法是两个作者的合称，但不是同一篇论文的，一个是1953年，另外一个是197x年对1953年的工作进行了一些扩展，所以以这两位作者的名字来命名这个算法。
 
@@ -77,14 +77,14 @@ A).  Metropolis-Hasting算法
 
 如果，建议分布q(y|x) 满足：q(y|x) = q(x|y)，即对称，这个时候比率 ![\alpha(x, y) = \min\left\{1, \frac{\pi(y)}{\pi(x)}\right\}](http://latex.codecogs.com/gif.latex?%5Cbg_white%20%5Calpha%28x%2C%20y%29%20%3D%20%5Cmin%5Cleft%5C%7B1%2C%20%5Cfrac%7B%5Cpi%28y%29%7D%7B%5Cpi%28x%29%7D%5Cright%5C%7D) 就是1953年最原始的算法，后来hasting把这个算法扩展了，不要求建议分布式对称的，从而得到了上述的算法。然而这个算法有一个缺点，就是抽样的效率不高，有些样本会被舍弃掉。从而产生了Gibbs算法。
 
-B).  Gibbs采样算法
+### B) Gibbs采样算法
 
 Gibbs算法，很简单，就是用条件分布的抽样来替代全概率分布的抽样。例如，![X=\{x_1,x_2,\cdots,x_n\}](http://latex.codecogs.com/gif.latex?%5Cbg_white%20X%3D%5C%7Bx_1%2Cx_2%2C%5Ccdots%2Cx_n%5C%7D) 满足分布p(X)，如何对p(X)进行抽样呢？如果我们知道它的条件分布 ![p(x_1|X_{-1}),\cdots,p(x_i|X_{-i}),\cdots](http://latex.codecogs.com/gif.latex?%5Cbg_white%20p%28x_1%7CX_%7B-1%7D%29%2C%5Ccdots%2Cp%28x_i%7CX_%7B-i%7D%29%2C%5Ccdots)，其中 ![X_{-i}](http://latex.codecogs.com/gif.latex?%5Cbg_white%20X_%7B-i%7D) 表示除了xi之外X的所有变量。如果这些条件分布都是很容易抽样的，那么我们就可以通过对条件分布的抽样来对全概率分布p(X)进行抽样。
 
 Gibbs采样算法的步骤：
 
 1. 给定一个初始样本 ![X_0=\{x_0^1,x_0^2,...,x_0^n\}](http://latex.codecogs.com/gif.latex?%5Cbg_white%20X_0%3D%5C%7Bx_0%5E1%2Cx_0%5E2%2C...%2Cx_0%5En%5C%7D)
-2.已知一个样本 ![X_i=\{x_i^1,x_i^2,...,x_i^n\}](http://latex.codecogs.com/gif.latex?%5Cbg_white%20X_i%3D%5C%7Bx_i%5E1%2Cx_i%5E2%2C...%2Cx_i%5En%5C%7D)，对于 ![x_{i+1}^1](http://latex.codecogs.com/gif.latex?%5Cbg_white%20x_%7Bi&plus;1%7D%5E1)进行抽样，![x_{i+1}^1 ~ p(x^1|X_{-1}^i)](http://latex.codecogs.com/gif.latex?%5Cbg_white%20x_%7Bi&plus;1%7D%5E1%20%7E%20p%28x%5E1%7CX_%7B-1%7D%5Ei%29)
+2. 已知一个样本 ![X_i=\{x_i^1,x_i^2,...,x_i^n\}](http://latex.codecogs.com/gif.latex?%5Cbg_white%20X_i%3D%5C%7Bx_i%5E1%2Cx_i%5E2%2C...%2Cx_i%5En%5C%7D)，对于 ![x_{i+1}^1](http://latex.codecogs.com/gif.latex?%5Cbg_white%20x_%7Bi&plus;1%7D%5E1)进行抽样，![x_{i+1}^1 ~ p(x^1|X_{-1}^i)](http://latex.codecogs.com/gif.latex?%5Cbg_white%20x_%7Bi&plus;1%7D%5E1%20%7E%20p%28x%5E1%7CX_%7B-1%7D%5Ei%29)
 3. 对于 ![x_{i+1}^2](http://latex.codecogs.com/gif.latex?%5Cbg_white%20x_%7Bi&plus;1%7D%5E2)进行抽样，![x_{i+1}^2 \sim p(x^2|x_{i+1}^1, x_i^3,...x_i^n)](http://latex.codecogs.com/gif.latex?%5Cbg_white%20x_%7Bi&plus;1%7D%5E2%20%5Csim%20p%28x%5E2%7Cx_%7Bi&plus;1%7D%5E1%2C%20x_i%5E3%2C...x_i%5En%29)
 4. 对于 ![x_{i+1}^n](http://latex.codecogs.com/gif.latex?%5Cbg_white%20x_%7Bi&plus;1%7D%5En)进行抽样，![x_{i+1}^n \sim p(x^n|x_{i+1}^1, x_{i+1}^2,\cdots,x_{i+1}^{n-1})](http://latex.codecogs.com/gif.latex?%5Cbg_white%20x_%7Bi&plus;1%7D%5En%20%5Csim%20p%28x%5En%7Cx_%7Bi&plus;1%7D%5E1%2C%20x_%7Bi&plus;1%7D%5E2%2C%5Ccdots%2Cx_%7Bi&plus;1%7D%5E%7Bn-1%7D%29)
 5. 步骤2~4可以得到X的一个样本，然后重复步骤2~4可以不断地得到X的样本。
