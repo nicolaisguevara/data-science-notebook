@@ -91,7 +91,7 @@ If transition matrix P is
 2. communicate
 3. aperiodic
 
-then a Markov chain may reach a **stationary distibution π\***, where the vector of probabilitieis of being in any particular gvin state is independent of the initial condition. The stationary distribution statisfies
+then a Markov chain may reach a **stationary distibution π\***, where the vector of probabilitieis of being in any particular given state is independent of the initial condition. The stationary distribution statisfies
 
 ![\boldsymbol{\pi}^*=\boldsymbol{\pi}^*\mathbf{P}](http://latex.codecogs.com/gif.latex?%5Cbg_white%20%5Cboldsymbol%7B%5Cpi%7D%5E*%3D%5Cboldsymbol%7B%5Cpi%7D%5E*%5Cmathbf%7BP%7D)
 
@@ -99,7 +99,7 @@ In other words, π\* is the left eigenvalue associated with the eigenvalue λ=1 
 
 ![P(j\rightarrow k)\pi_j^*=P(k\rightarrow j)\pi_k^*](http://latex.codecogs.com/gif.latex?P%28j%5Crightarrow%20k%29%5Cpi_j%5E*%3DP%28k%5Crightarrow%20j%29%5Cpi_k%5E*)
 
-This is also called the reversibility condition
+which is also called the reversibility condition.
 
 ### Discrete to Continuous
 
@@ -114,3 +114,71 @@ and the continuous extension of the Chapman-Kolomogrovequation becomes
 At equilibrium, the stationary distribution satisfies
 
 ![\pi^*(y)=\int \pi^*(x)P(x,y)\,dy](http://latex.codecogs.com/gif.latex?%5Cpi%5E*%28y%29%3D%5Cint%20%5Cpi%5E*%28x%29P%28x%2Cy%29%5C%2Cdy)
+
+### The Metropolis-Hasting Algorithm
+
+One problem with applying Monte Carlo integration is in obtaining samples from some complex probability distribution p(x). Attenpts to solve this problem are the roots of MCMC methods. Suppose our goal is to draw samples from some distribution p(θ) where p(θ)=f(θ)/K, where the normalizing constant K may not be known, and very difficult to compute.
+
+The **Metropolis algorithm** generates a sequence of draws from this distribution by
+
+1. start with any initial value θ0 satisfying f(θ0)>0
+2. using current θ value, sample a candidate point θ* from some jumping distribution q(θ1,θ2), which is the probability of returning a value of θ2 given a previoius value of θ1. This distribution is also referred to as the proposal or candidate-generating distribution. The only restriction on the jump density is that it is symmetric, i.e., q(θ1,θ2)=q(θ2,θ1).
+3. Given the candidate point θ*, calculate the ratio of the density at the candidate (θ*) and current (θt-1) points
+  - ![\alpha=\frac{p(\theta^*)}{p(\theta_{t-1}}=\frac{f(\theta^*)}{f(\theta_{t-1})}](http://latex.codecogs.com/gif.latex?%5Calpha%3D%5Cfrac%7Bp%28%5Ctheta%5E*%29%7D%7Bp%28%5Ctheta_%7Bt-1%7D%7D%3D%5Cfrac%7Bf%28%5Ctheta%5E*%29%7D%7Bf%28%5Ctheta_%7Bt-1%7D%29%7D)
+4. If the jump increases the density (α>1), accept the candidate point (set θt=θ*) and goto step 2. If the jump decrease the density (α<1), then with probability α accept the candidate point, else reject it and goto step 2.
+
+The Metropolis sampling can be summerized as computing
+
+![\alpha=\min\left(\frac{f(\theta^*)}{f(\theta_{t-1})},1\right)](http://latex.codecogs.com/gif.latex?%5Calpha%3D%5Cmin%5Cleft%28%5Cfrac%7Bf%28%5Ctheta%5E*%29%7D%7Bf%28%5Ctheta_%7Bt-1%7D%29%7D%2C1%5Cright%29)
+
+and then accepting a candiate point with probability α (the **probability of a move**). this generates a Markov chain (θ0,θ1,...,θk,...). Following a sufficient **burn-in period** (say k steps), the chain approaches its stationary distribution and samples from the vector (θk+1,...,θk+n) are samples from p(x).
+
+Hastings generalized the Metropolis algorithm by using an arbitrary transition probability function q(θ1,θ2)=Pr(θ1->θ2), and setting the acceptance probability for a candidate point as
+
+![\alpha=\min\left(\frac{f(\theta^*)q(\theta^*,\theta_{t-1})}{f(\theta_{t-1})q(\theta_{t-1},\theta^*)},1\right)](http://latex.codecogs.com/gif.latex?%5Calpha%3D%5Cmin%5Cleft%28%5Cfrac%7Bf%28%5Ctheta%5E*%29q%28%5Ctheta%5E*%2C%5Ctheta_%7Bt-1%7D%29%7D%7Bf%28%5Ctheta_%7Bt-1%7D%29q%28%5Ctheta_%7Bt-1%7D%2C%5Ctheta%5E*%29%7D%2C1%5Cright%29)
+
+This is the **Metropolis-Hasting algorithm**. Assuming that hte proposal distribution is symmetric, i.e., q(x,y)=q(y,x), recovers the original Metropolis algorithm.
+
+### Metropolis-Hasting Sampling as a Markov Chain
+
+To demonstrate the Metropolis-Hasting sampling generates a Markov chain whos e equilibrium density is the candidate density p(x), it is sufficient to show that the Metropolis-Hasting transition kernel satisfy the detailed balance equation with p(x).
+
+Under the Metropolis-Hasting algorithm, we sample from q(x,y)=Pr(x->y|q) and then accept the move with probability α(x,y), so that the transition probability kernel is given by
+
+![\mathrm{Pr}(x\rightarrow y)=q(x,y)\alpha(x,y)=q(x,y)\cdot\min\left[\frac{p(y)q(y,x)}{p(x)q(x,y)},1\right ] ](http://latex.codecogs.com/gif.latex?%5Cmathrm%7BPr%7D%28x%5Crightarrow%20y%29%3Dq%28x%2Cy%29%5Calpha%28x%2Cy%29%3Dq%28x%2Cy%29%5Ccdot%5Cmin%5Cleft%5B%5Cfrac%7Bp%28y%29q%28y%2Cx%29%7D%7Bp%28x%29q%28x%2Cy%29%7D%2C1%5Cright%20%5D)
+
+Thus if the Metropolis-Hasting kernel satisfies P(x->y)p(x)=P(y->x)p(y), or
+
+![q(x,y)\alpha(x,y)p(x)=q(y,x)\alpha(y,x)p(y)\quad \textrm{for all }x,y](http://latex.codecogs.com/gif.latex?q%28x%2Cy%29%5Calpha%28x%2Cy%29p%28x%29%3Dq%28y%2Cx%29%5Calpha%28y%2Cx%29p%28y%29%5Cquad%20%5Ctextrm%7Bfor%20all%20%7Dx%2Cy)
+
+then the stationary distribution from this kernel corresponds to draws from the target distribution.
+
+### The gibbs Sampler
+
+The **Gibbs sampler** is a special case of Metropolis-Hasting sampling wherein the random value is always accepted (i.e., α=1). The key to the gibbs sampler is that one only considers *univariate* conditional distributions - the distribution when all of the random variables but one are complex joint distributions and usually have simple forms. Thus one simulates n random variables sequenctially from the n univariate conditionals rather than generating a single n-dimensional vector in a single pass using the full joint distribution.
+
+Consider a bivariate random variable (x,y), and suppose we wish to compute one or both marginals, p(x) and p(y). The idea behind the sampler is that it is far easier to consider a sequence of conditional distributions, p(x|y) and p(y|x), than it is to obtain the marginal by integration of the joint density p(x,y), e.g.,
+
+![p(x)=\int p(x,y)\,dy](http://latex.codecogs.com/gif.latex?p%28x%29%3D%5Cint%20p%28x%2Cy%29%5C%2Cdy)
+
+The sampler stats with some conditiona distribution p(x|y=y0), then uses x0 to generate a new value of y1, drawing from the conditional distribution based on the value x0, p(y|x=x0). The sample proceeds as follows
+
+![x_i\sim p(x|y=y_{i-1})](http://latex.codecogs.com/gif.latex?x_i%5Csim%20p%28x%7Cy%3Dy_%7Bi-1%7D%29)
+
+![y_i\sim p(y|x=x_i)](http://latex.codecogs.com/gif.latex?y_i%5Csim%20p%28y%7Cx%3Dx_i%29)
+
+Repeating this process k times, generates a Gibbs sequence of length k, where a subset are taken as our simulated draws from the full joint distribution. (One iteration of all the univariate distributions is often caalled a **scan** of the sampler). The Gibbs sequence converges to a stationary (equilibrium) distribution that is independent of the stating values, and by constribution this stationary distribution is the target distribution we are trying to simulate.
+
+### Using the Gibbs Sampler to Approximate Marginal Distributions
+
+Any feature of interest for the marginals can be computed from the m realization of the Gibbs sequence. For example, the expectation of any function f of the random variable x is approximated by
+
+![E[f(x)]_m=\frac{1}{m}\sum_{i=1}^{m}f(x_i)](http://latex.codecogs.com/gif.latex?E%5Bf%28x%29%5D_m%3D%5Cfrac%7B1%7D%7Bm%7D%5Csum_%7Bi%3D1%7D%5E%7Bm%7Df%28x_i%29)
+
+This is the **Monte-Carlo** (MC) estimate of f(x), as
+
+![E[f(x)]_m\rightarrow E[f(x)]](http://latex.codecogs.com/gif.latex?E%5Bf%28x%29%5D_m%5Crightarrow%20E%5Bf%28x%29%5D) as ![m\rightarrow \infty](http://latex.codecogs.com/gif.latex?m%5Crightarrow%20%5Cinfty)
+
+Likewise, the MC estimate for any function of n variables is given by
+
+![E[f(\theta^{(1)},\cdots,\theta^{(n)})]_m=\frac{1}{m}\sum_{i=1}^{m}f(\theta_i^{(1)},\cdots,\theta_i^{(n)})](http://latex.codecogs.com/gif.latex?E%5Bf%28%5Ctheta%5E%7B%281%29%7D%2C%5Ccdots%2C%5Ctheta%5E%7B%28n%29%7D%29%5D_m%3D%5Cfrac%7B1%7D%7Bm%7D%5Csum_%7Bi%3D1%7D%5E%7Bm%7Df%28%5Ctheta_i%5E%7B%281%29%7D%2C%5Ccdots%2C%5Ctheta_i%5E%7B%28n%29%7D%29)
