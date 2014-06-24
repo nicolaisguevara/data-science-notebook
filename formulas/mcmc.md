@@ -31,7 +31,7 @@ which we approximate by
 
 Suppose the density function p(x) roughly approximates the density (of interest) q(x), then
 
-![\int f(x)q(x)\,dx=\int f(x)\left(\frac{q(x)}{p(x)} \right )p(x)\,dx=E_{p(x)}\left[f(x)\left(\frac{q(x)}{p(x)}\right) \right] ]http://latex.codecogs.com/gif.latex?%5Cbg_white%20%5Cint%20f%28x%29q%28x%29%5C%2Cdx%3D%5Cint%20f%28x%29%5Cleft%28%5Cfrac%7Bq%28x%29%7D%7Bp%28x%29%7D%20%5Cright%20%29p%28x%29%5C%2Cdx%3DE_%7Bp%28x%29%7D%5Cleft%5Bf%28x%29%5Cleft%28%5Cfrac%7Bq%28x%29%7D%7Bp%28x%29%7D%5Cright%29%20%5Cright%5D)
+![\int f(x)q(x)\,dx=\int f(x)\left(\frac{q(x)}{p(x)} \right )p(x)\,dx=E_{p(x)}\left[f(x)\left(\frac{q(x)}{p(x)}\right) \right] ](http://latex.codecogs.com/gif.latex?%5Cbg_white%20%5Cint%20f%28x%29q%28x%29%5C%2Cdx%3D%5Cint%20f%28x%29%5Cleft%28%5Cfrac%7Bq%28x%29%7D%7Bp%28x%29%7D%20%5Cright%20%29p%28x%29%5C%2Cdx%3DE_%7Bp%28x%29%7D%5Cleft%5Bf%28x%29%5Cleft%28%5Cfrac%7Bq%28x%29%7D%7Bp%28x%29%7D%5Cright%29%20%5Cright%5D)
 
 This forms the basis for the method of **importance sampling** with
 
