@@ -1,7 +1,7 @@
 ### Contents
 
-1. [Installing the GNU Readline library](#Installing-the-GNU-Readline-library)
-2. [Installing R](#Installing-R)
+1. [Installing the GNU Readline library](#installing-the-gnu-readline-library)
+2. [Installing R](#installing-r)
 
 ### Installing the GNU Readline library
 
