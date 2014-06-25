@@ -58,7 +58,7 @@ make install
 3. Run configure
 
 ```sh
-./configure --prefix=<YOUR_R_HOME> --with-readline=yes --with-x=no
+./configure --prefix=/opt/R-3.1.0 --with-readline=yes --with-x=no
 ```
 
 4. Build the R library
@@ -70,5 +70,5 @@ make && make install
 5. Create a link
 
 ```sh
-ln -s <YOUR_R_HOME>/bin/R /usr/local/bin/R
+ln -s /opt/R-3.1.0/bin/R /usr/local/bin/R
 ```
