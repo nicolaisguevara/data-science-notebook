@@ -6,6 +6,11 @@ small.churn <- read.csv("orange_small_train_churn.labels", header=FALSE)
 small.upselling <- read.csv("orange_small_train_upselling.labels", header=FALSE)
 small.appetency <- read.csv("orange_small_train_appetency.labels", header=FALSE)
 
+## assign column names for labels
+names(small.churn) <- "churn"
+names(small.upselling) <- "upselling"
+names(small.appetency) <- "appetency"
+
 ## combine data with labels
 small.all <- cbind(small.data, small.churn, small.upselling, small.appetency)
 
