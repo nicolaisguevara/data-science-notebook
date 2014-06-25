@@ -42,12 +42,14 @@ make install
 5a. Now, ensure that the directory where the library has been installed (`/usr/local/lib/` by default) is in the search path. You can do this by setting the environment variable `LD_LIBRARY_PATH`
 
 ```csh
-(csh)   setenv LD_LIBRARY_PATH /usr/local/lib
+(csh)   setenv LD_LIBRARY_PATH /usr/local/lib:$LD_LIBRARY_PATH
 ```
 
 ```sh
-(sh)    export LD_LIBRARY_PATH=/usr/local/lib
+(sh)    export LD_LIBRARY_PATH=/usr/local/lib:$LD_LIBRARY_PATH
 ```
+
+5b. or add the script into `/etc/profile` or `~/.bashrc`.
 
 ### Installing R
 
