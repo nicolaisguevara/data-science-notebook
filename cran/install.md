@@ -39,7 +39,7 @@ make
 make install
 ```
 
-\5. Now, ensure that the directory where the library has been installed (`/usr/local/lib/` by default) is in the search path. You can do this by setting the environment variable `LD_LIBRARY_PATH`
+5a. Now, ensure that the directory where the library has been installed (`/usr/local/lib/` by default) is in the search path. You can do this by setting the environment variable `LD_LIBRARY_PATH`
 
 ```csh
 (csh)   setenv LD_LIBRARY_PATH /usr/local/lib
@@ -54,6 +54,10 @@ make install
 1. Download the R source from http://mirrors.ustc.edu.cn/CRAN/src/base/R-3/R-3.1.0.tar.gz
 
 2. Unpack the gzipped tar file
+
+```sh
+tar zxf R-3.1.0.tar.gz
+```
 
 3. Run configure
 
