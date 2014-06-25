@@ -45,7 +45,7 @@ make install
 (csh)   setenv LD_LIBRARY_PATH /usr/local/lib
 ```
 
-```bash
+```sh
 (sh)    export LD_LIBRARY_PATH=/usr/local/lib
 ```
 
