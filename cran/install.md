@@ -41,8 +41,11 @@ make install
 
 5. Now, ensure that the directory where the library has been installed (`/usr/local/lib/` by default) is in the search path. You can do this by setting the environment variable LD_LIBRARY_PATH
 
-```sh
+```csh
 (csh)   setenv LD_LIBRARY_PATH /usr/local/lib
+```
+
+```bash
 (sh)    export LD_LIBRARY_PATH=/usr/local/lib
 ```
 
