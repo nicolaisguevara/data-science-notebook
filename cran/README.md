@@ -8,13 +8,13 @@ The Comprehensive R Archive Network (CRAN)
   - \{lars\}: Least Angle Regression, Lasso and Forward Stagewise
 - Classification and Regression Tree (CART):
   - [\{rpart\}](rpart/): Recursive Partitioning and Regression Trees
-  - \{rpart.plot}: Plot rpart models
-  - \{party\}: A Laboratory for Recursive Partytioning
+    - [\{randomForest\}](randomForest/): Classification and Regression with Random Forest based on {rpart}
+    - \{rpart.plot}: Plot rpart models
+  - \{party\}: conditional inference tree and random forest
   - \{tree\}: Classiﬁcation and regression trees
 - Multiple Additive Regression Tree (MART), also called Gradient Boosting Decision Tree (GBDT):
   - \{gbm\}: Generalized Boosted Regression Models
   - \{mboost\}: Model-Based Boosting
-- [\{randomForest\}](randomForest/): Classification and Regression with Random Forest
 - \{stats\}
   - kmeans(): K-Means Clustering
 - \{e1071\}: Misc Functions of the Department of Statistics
