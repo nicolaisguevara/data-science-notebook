@@ -7,6 +7,8 @@ data$Species <- factor(ifelse(data$Species == "setosa","rare","common"))
 table(data$Species)
 
 ## now using SMOTE to create a more "balanced problem"
+library(DMwR)
+
 newData <- SMOTE(Species ~ ., data, perc.over = 600,perc.under=100)
 table(newData$Species)
 
