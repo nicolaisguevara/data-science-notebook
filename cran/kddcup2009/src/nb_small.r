@@ -1,7 +1,7 @@
 ## Read data and labels
+df.churn <- read.csv('orange_small_train_churn.labels', header=FALSE)
+df.upsell <- read.csv('orange_small_train_upselling.labels', header=FALSE)
 df.appet <- read.csv('orange_small_train_appetency.labels', header=FALSE)
-df.churn <- read.csv('orange_small_train_appetency.labels', header=FALSE)
-df.upsell <- read.csv('orange_small_train_appetency.labels', header=FALSE)
 df.train <- read.table('orange_small_train.data',header=TRUE,sep='\t')
 
 ## Remove columns with duplicated values
