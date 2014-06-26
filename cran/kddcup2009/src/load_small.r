@@ -1,19 +1,19 @@
 ## load train data
-small.data <- read.table("orange_small_train.data", header=TRUE, sep="\t")
+df.small.data <- read.table("orange_small_train.data", header=TRUE, sep="\t")
 
 ## load churn, upselling and appetency labels
-small.churn <- read.csv("orange_small_train_churn.labels", header=FALSE)
-small.upselling <- read.csv("orange_small_train_upselling.labels", header=FALSE)
-small.appetency <- read.csv("orange_small_train_appetency.labels", header=FALSE)
+df.small.labels_C <- read.csv("orange_small_train_churn.labels", header=FALSE, col.names="Churn")
+df.small.labels_U <- read.csv("orange_small_train_upselling.labels", header=FALSE, col.names="Upselling")
+df.small.labels_A <- read.csv("orange_small_train_appetency.labels", header=FALSE, col.names="Appetency")
 
-## assign column names for labels
-names(small.churn) <- "churn"
-names(small.upselling) <- "upselling"
-names(small.appetency) <- "appetency"
+## set labels to categorical values
+df.small.labels_C$Churn <- factor(df.small.labels_C$Churn)
+df.small.labels_U$Upselling <- factor(df.small.labels_u$Upselling)
+df.small.labels_A$Appetency <- factor(df.small.labels_A$Appetency)
 
 ## combine data with labels
-small.all <- cbind(small.data, small.churn, small.upselling, small.appetency)
+df.raw <- cbind(df.small.data, df.small.labels_C, df.small.labels_U, df.small.labels_A)
 
 ## split train data into train and test
-small.train <- small.all[c(1:10000,20001:30000,40001:50000),]
-small.test <- small.all[c(10001:20000,30001:40000),]
+df.train <- df.raw[1:40000,]
+df.test <- df.raw[40001:50000,]
