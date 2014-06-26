@@ -30,6 +30,8 @@ df.train_Utest <- df.train_U[40001:50000,]
 df.train_Atest <- df.train_A[40001:50000,]
 
 # Build Naive Bayes models
+library(e1071)
+
 mod_C <- naiveBayes(V1~., df.train_Ctrain, laplace=0.00001)
 mod_U <- naiveBayes(V1~., df.train_Utrain, laplace=0.00001)
 mod_A <- naiveBayes(V1~., df.train_Atrain, laplace=0.00001)
@@ -40,6 +42,8 @@ pre_U <- predict(mod_U, df.train_Utest, type="raw")
 pre_A <- predict(mod_A, df.train_Atest, type="raw")
 
 # Create predictions for ROCR
+library(ROCR)
+
 pred_C <- prediction(pre_C[,2], df.train_Ctest$V1)
 pred_U <- prediction(pre_U[,2], df.train_Utest$V1)
 pred_A <- prediction(pre_A[,2], df.train_Atest$V1)
