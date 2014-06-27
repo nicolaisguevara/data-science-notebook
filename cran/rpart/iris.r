@@ -14,6 +14,8 @@ test <- iris[c(41:50, 91:100, 141:150), ]
 rt <- rpart(Species ~ ., data=train, method="class")
 
 ## visualize tree
+library(DMwR)
+
 prettyTree(rt)
 
 ## plot tree 
