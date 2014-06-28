@@ -25,13 +25,15 @@ LR主要用来解决两类分类问题。下面的问题是一些典型的两类
 - LR不仅可以预测一个样本属于那一类，而且可以给出属于每一类的概率
 - LR的模型简单，从而解释预测结果也相对容易
 - LR的模型简单，从而并行化相对容易
-- 不同类型的LR
+
+### 不同类型的LR
 
 自从LR提出之后，学术界对它的改进主要基于两个方面：
 
 - 用什么样的正则化，早期是L2正则化，而最近用的比较多的是L1正则化
 - 用什么样的优化算法，如何在最短的时间内收敛到最优的解
-- 正则化
+
+#### 正则化
 
 正则化是机器学习中的一个重要技术，它的主要目的是让防止一个模型过拟合。目前比较常用的正则化有L1，和L2：
 
@@ -44,7 +46,7 @@ L1正则化相对与L2正则化有一个优点，就是加入L1正则化的损�
 - w向量一般需要用HashMap存储，而一个特征的权重为0，就不需要存储了，因为HashMap中不存在的特征就是权重为0
 - 所以L1正则化可以减少w的内存占用，而w减小后，计算w和x的点乘的速度也能提高
 
-### 优化方法
+#### 优化方法
 
 L2正则化的LR的损失函数是一个可以求导的凸函数，从而可以用最速下降法（梯度法）进行优化。一般梯度法有3种
 
@@ -52,11 +54,11 @@ L2正则化的LR的损失函数是一个可以求导的凸函数，从而可以�
 2. Mini batch
 3. SGD （随机梯度法）
 
-这3种方法是最早提出的优化方法。可以用梯度法，自然也可以用牛顿法来获得超线性收敛的特性，于是共轭梯度法和LBFGS也被用来优化LR。LBFGS是基于L2正则化的，如果基于L1正则化，微软提出了OWLQN算法（http://blog.csdn.net/qm1004/article/details/18083637）。
+这3种方法是最早提出的优化方法。可以用梯度法，自然也可以用牛顿法来获得超线性收敛的特性，于是共轭梯度法和LBFGS也被用来优化LR。LBFGS是基于L2正则化的，如果基于L1正则化，微软提出了OWLQN算法: http://blog.csdn.net/qm1004/article/details/18083637
 
 无论是梯度法还是拟牛顿法，它们都是频率学派的优化双方。它们其实是极大似然估计用了不同的优化算法。于是，贝叶斯学派也提出了Bayesian的优化算法
 
-Ad Predictor: 这是微软的研究员提出的一种算法， 论文可以参考 Web-Scale Bayesian Click-Through Rate Prediction for Sponsored Search Advertising in Microsoft’s Bing Search Engine。
+- Ad Predictor: 这是微软的研究员提出的一种算法， 论文可以参考 Web-Scale Bayesian Click-Through Rate Prediction for Sponsored Search Advertising in Microsoft’s Bing Search Engine。
 
 Ad Predictor有几个比较好的特性
 
@@ -65,7 +67,7 @@ Ad Predictor有几个比较好的特性
 
 Ad Predictor很好了，不过它是基于L2正则化的，这样总是让人不能满意。Google在2013年发表了一篇论文（Ad Click Prediction: a View from the Trenches），介绍了一个基于L1正则化的LR优化算法FTRL-Proximal，且又具有上述Ad Predictor的两个优点。
 
-### 并行化
+#### 并行化
 
 - 算法的并行化有两种
 
