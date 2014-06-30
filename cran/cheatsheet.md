@@ -57,7 +57,7 @@ my.class
 
 ```
 for (i in which(sapply(df, is.numeric))) {
-  dat[is.na(df[, i]), i] <- mean(df[, i],  na.rm = TRUE)
+  df[is.na(df[, i]), i] <- mean(df[, i],  na.rm = TRUE)
 }
 ```
 
