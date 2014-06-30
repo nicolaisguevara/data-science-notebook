@@ -11,7 +11,7 @@ df.test <- df[ind==2,]
 #### Remove column with constant (duplicated) values
 
 ```
-df[!duplicated(lapply(df,c))]
+df[, !duplicated(lapply(df,c))]
 ```
 
 #### Remove column with all NA values
@@ -19,7 +19,7 @@ df[!duplicated(lapply(df,c))]
 Choose column with #NA not equal to #rows
 
 ```
-df[,colSums(is.na(df))<nrow(df)]
+df[, colSums(is.na(df))<nrow(df)]
 ```
 
 #### Select rows
