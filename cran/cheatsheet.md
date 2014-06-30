@@ -52,3 +52,12 @@ for (i in 1:ncol(df)) {
 }
 my.class
 ```
+
+### replace NA with mean of column
+
+```
+for (i in which(sapply(df, is.numeric))) {
+  dat[is.na(df[, i]), i] <- mean(df[, i],  na.rm = TRUE)
+}
+```
+
