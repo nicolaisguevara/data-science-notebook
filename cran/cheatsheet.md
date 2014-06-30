@@ -61,3 +61,9 @@ for (i in which(sapply(df, is.numeric))) {
 }
 ```
 
+### replace values with conditions
+
+```
+v <- c(0.3, 0.4, 0.6, 0.2)
+v <- ifelse(v > 0.5, 1, 0)
+```
