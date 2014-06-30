@@ -42,3 +42,13 @@ Method 3: using `colnames`
 ```
 df[,!(colnames(df) %in% c(selected))]
 ```
+
+#### Get the types of all columns of a data frame
+
+```
+my.class <- rep(NA, ncol(df))
+for (i in 1:ncol(df)) {
+  my.class[i] <- class(df[,i])
+}
+my.class
+```
