@@ -47,6 +47,54 @@ Every random varialbe that takes only the two values 0 and 1 must have a Bernoul
 
 A random variable X has the Bernoulli distribution with parameter p if the p.f. of X is ![f(x|p)=p^x(1-p)^{1-x}](http://latex.codecogs.com/gif.latex?%5Cinline%20%5Cdpi%7B100%7D%20%5Cbg_white%20f%28x%7Cp%29%3Dp%5Ex%281-p%29%5E%7B1-x%7D) for x=0,1 and 0 otherwise. If X1,...,Xn are i.i.d random varialbes all having the Bernoulli distribution with parameter p, then we refer X1,...,Xn as Bernoulli trials, and ![X=\sum_{i=1}^{n}X_i](http://latex.codecogs.com/gif.latex?%5Cinline%20%5Cdpi%7B100%7D%20%5Cbg_white%20X%3D%5Csum_%7Bi%3D1%7D%5E%7Bn%7DX_i) has the binomial distribution with parameters n and p. Also, X is the number of successes in the n Bernoulli trials, where success on trial i corresponds to Xi=1 and failure corresponds to Xi=0.
 
+### Logistic Regression
+
+> Dr. David A. Stephens. [CHAPTER 5 LOGISTIC AND POISSON REGRESSION](http://www2.imperial.ac.uk/~das01/MyWeb/M3S12/Handouts/Notes/Chap5.pdf)
+
+Logistic regression is a special case of the binomial/Bernoulli GLM for binary response random Yi with canonical logistic (or logit) link:
+
+![Y_i|\theta_{0i}\sim \mathit{Bernoulli}(\theta_{0i})\quad f_{Y_i|\theta_{0i}}(y_i;\theta_{0i})=\theta_{0i}^{yi}(1-\theta_{0i})^{1-y_i}
+](http://latex.codecogs.com/gif.latex?%5Cdpi%7B100%7D%20%5Cbg_white%20Y_i%7C%5Ctheta_%7B0i%7D%5Csim%20%5Cmathit%7BBernoulli%7D%28%5Ctheta_%7B0i%7D%29%5Cquad%20f_%7BY_i%7C%5Ctheta_%7B0i%7D%7D%28y_i%3B%5Ctheta_%7B0i%7D%29%3D%5Ctheta_%7B0i%7D%5E%7Byi%7D%281-%5Ctheta_%7B0i%7D%29%5E%7B1-y_i%7D)
+
+![\mathrm{logit}(\theta_{0i})=\log\Big(\frac{\theta_{0i}}{1-\theta_{0i}}\Big)=x_i^T\beta](http://latex.codecogs.com/gif.latex?%5Cdpi%7B100%7D%20%5Cbg_white%20%5Cmathrm%7Blogit%7D%28%5Ctheta_%7B0i%7D%29%3D%5Clog%5CBig%28%5Cfrac%7B%5Ctheta_%7B0i%7D%7D%7B1-%5Ctheta_%7B0i%7D%7D%5CBig%29%3Dx_i%5ET%5Cbeta)
+
+For this model, the expected response ![\mu_i](http://latex.codecogs.com/gif.latex?%5Cinline%20%5Cdpi%7B100%7D%20%5Cbg_white%20%5Cmu_i) is:
+
+![\mu_i=\theta_{0i}=\frac{\exp\{x_i^T\beta\}}{1+\exp\{x_i^T\beta\}}](http://latex.codecogs.com/gif.latex?%5Cdpi%7B100%7D%20%5Cbg_white%20%5Cmu_i%3D%5Ctheta_%7B0i%7D%3D%5Cfrac%7B%5Cexp%5C%7Bx_i%5ET%5Cbeta%5C%7D%7D%7B1&plus;%5Cexp%5C%7Bx_i%5ET%5Cbeta%5C%7D%7D).
+
+### Risks, Odds, and Odds Ratios
+
+For the logistic regression GLM, results relating to odds and odds ratios are straightforward. We have the odds on occurence or odds on incidence
+
+![\frac{P[Y_i=1]}{P[Y_i=0]}=\frac{\theta_i}{1-\theta_i}=exp\{x_i^T\beta\}](http://latex.codecogs.com/gif.latex?%5Cdpi%7B100%7D%20%5Cbg_white%20%5Cfrac%7BP%5BY_i%3D1%5D%7D%7BP%5BY_i%3D0%5D%7D%3D%5Cfrac%7B%5Ctheta_i%7D%7B1-%5Ctheta_i%7D%3Dexp%5C%7Bx_i%5ET%5Cbeta%5C%7D)
+
+and for two different predictor vectors xi and xj, the odds ratio
+
+![\psi=\frac{P[Y_i]=1/P[Y_i=0]}{P[Y_j=1]/P[Y_j=0]}=\frac{\theta_i/(1-\theta_i)}{\theta_j/(1-\theta_j)}=\frac{\exp\{x_i^T\beta\}}{\exp\{x_j^T\beta\}}=\exp\{(x_i-x_j)^T\beta\}](http://latex.codecogs.com/gif.latex?%5Cdpi%7B100%7D%20%5Cbg_white%20%5Cpsi%3D%5Cfrac%7BP%5BY_i%5D%3D1/P%5BY_i%3D0%5D%7D%7BP%5BY_j%3D1%5D/P%5BY_j%3D0%5D%7D%3D%5Cfrac%7B%5Ctheta_i/%281-%5Ctheta_i%29%7D%7B%5Ctheta_j/%281-%5Ctheta_j%29%7D%3D%5Cfrac%7B%5Cexp%5C%7Bx_i%5ET%5Cbeta%5C%7D%7D%7B%5Cexp%5C%7Bx_j%5ET%5Cbeta%5C%7D%7D%3D%5Cexp%5C%7B%28x_i-x_j%29%5ET%5Cbeta%5C%7D)
+
+![\log\psi=(x_i-x_j)^T\beta](http://latex.codecogs.com/gif.latex?%5Cdpi%7B100%7D%20%5Cbg_white%20%5Clog%5Cpsi%3D%28x_i-x_j%29%5ET%5Cbeta)
+
+Suppose xi and xj (both vectors of K+1 elements) differ only in element k, then
+
+![\psi=\exp\big\{(x_i-x_j)^T\beta\big\}=\exp\big\{(x_{ik}-x_{jk})\beta_k\big\}\quad\Rightarrow\quad\log\psi=(x_{ik}-x{jk})\beta_k](http://latex.codecogs.com/gif.latex?%5Cdpi%7B100%7D%20%5Cbg_white%20%5Cpsi%3D%5Cexp%5Cbig%5C%7B%28x_i-x_j%29%5ET%5Cbeta%5Cbig%5C%7D%3D%5Cexp%5Cbig%5C%7B%28x_%7Bik%7D-x_%7Bjk%7D%29%5Cbeta_k%5Cbig%5C%7D%5Cquad%5CRightarrow%5Cquad%5Clog%5Cpsi%3D%28x_%7Bik%7D-x%7Bjk%7D%29%5Cbeta_k)
+
+and thus the odds ratios for different predictor values is available in a straightforward form. Thus the log-odds ratio is a linear function of the predictor and the coefficient. The odds ratio for *discrete (factor) predictors* in the logistic GLM is particularly straightforward.
+
+### Poisson Regression
+
+Poisson Regression is the term applied to the Poisson GLM, for non-negative integer response variable Yi where the **canonical** log link is used:
+
+![Y_i|\lambda_{0i}\sim\mathit{Poisson}(\lambda_{0i})\quad f_{Y_i|\lambda_{0i}}(y_i\lambda_{0i})=\frac{\exp\{-\lambda_{0i}\lambda_{0i}^{y_i}\}}{y_i!}](http://latex.codecogs.com/gif.latex?%5Cdpi%7B100%7D%20%5Cbg_white%20Y_i%7C%5Clambda_%7B0i%7D%5Csim%5Cmathit%7BPoisson%7D%28%5Clambda_%7B0i%7D%29%5Cquad%20f_%7BY_i%7C%5Clambda_%7B0i%7D%7D%28y_i%5Clambda_%7B0i%7D%29%3D%5Cfrac%7B%5Cexp%5C%7B-%5Clambda_%7B0i%7D%5Clambda_%7B0i%7D%5E%7By_i%7D%5C%7D%7D%7By_i%21%7D)
+
+![\log(\lambda_{0i})=x_i^T\beta](http://latex.codecogs.com/gif.latex?%5Cdpi%7B100%7D%20%5Cbg_white%20%5Clog%28%5Clambda_%7B0i%7D%29%3Dx_i%5ET%5Cbeta)
+
+```
+glm(y~factor(exposure)+offset(log(T)),family=poisson(link=log))
+```
+
+### Bayes Information Creiterion (BIC)
+
+![\mathbf{BIC}_M=2\big[-l_M(\hat{\beta}_M)+d\log n\big]](http://latex.codecogs.com/gif.latex?%5Cdpi%7B100%7D%20%5Cbg_white%20%5Cmathbf%7BBIC%7D_M%3D2%5Cbig%5B-l_M%28%5Chat%7B%5Cbeta%7D_M%29&plus;d%5Clog%20n%5Cbig%5D)
 
 ### Relationship Between Logistic Regression and LDA
 
