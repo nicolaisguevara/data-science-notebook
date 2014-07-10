@@ -5,7 +5,7 @@ Logistic Regression
 
 ### Bernoulli Distributions
 
-A random variable X has the *Bernoulli distribution with parameter p* ![0 \leq p \leq 1](http://latex.codecogs.com/gif.latex?%5Cinline%20%5Cdpi%7B100%7D%20%5Cbg_white%200%20%5Cleq%20p%20%5Cleq%201) if X can only take the values 0 and 1 and the probabilities are
+A random variable X has the *Bernoulli distribution with parameter p* (![0 \leq p \leq 1](http://latex.codecogs.com/gif.latex?%5Cinline%20%5Cdpi%7B100%7D%20%5Cbg_white%200%20%5Cleq%20p%20%5Cleq%201)) if X can only take the values 0 and 1 and the probabilities are
 
 ![\mathrm{Pr}(X=1)=p\quad\textrm{and}\quad\mathrm{Pr}(X=0)=1-p](http://latex.codecogs.com/gif.latex?%5Cdpi%7B100%7D%20%5Cbg_white%20%5Cmathrm%7BPr%7D%28X%3D1%29%3Dp%5Cquad%5Ctextrm%7Band%7D%5Cquad%5Cmathrm%7BPr%7D%28X%3D0%29%3D1-p).
 
